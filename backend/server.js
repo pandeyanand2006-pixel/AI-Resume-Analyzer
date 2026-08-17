@@ -28,21 +28,38 @@ connectDB();
 app.use(helmet());
 
 // CORS: allow a single origin or a comma-separated allowlist via FRONTEND_URLS
-const frontendUrls = process.env.FRONTEND_URLS || process.env.FRONTEND_URL || "http://localhost:5173";
-const allowedOrigins = frontendUrls.split(",").map((s) => s.trim()).filter(Boolean);
+const frontendUrls =
+  process.env.FRONTEND_URLS ||
+  process.env.FRONTEND_URL ||
+  "http://localhost:5175";
+
+const allowedOrigins = frontendUrls
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      // allow requests with no origin (like mobile apps, curl)
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.includes(origin)) return callback(null, true);
-      return callback(new Error("CORS policy: This origin is not allowed."));
+      // Allow requests without an Origin header
+      // such as Postman, curl, and some mobile requests.
+      if (!origin) {
+        return callback(null, true);
+      }
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      console.log("CORS blocked origin:", origin);
+
+      return callback(
+        new Error(`CORS policy: Origin ${origin} is not allowed.`)
+      );
     },
     credentials: true,
   })
 );
-
 app.use(express.json());
 
 // Rate limiting: basic protection against brute force and abuse
