@@ -1,11 +1,12 @@
 # Dependencies
 node_modules/
 
-# Environment variables
+# Environment variables - NEVER upload
 .env
 .env.*
+!.env.example
 
-# Build files
+# Build output
 dist/
 build/
 
