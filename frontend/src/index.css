@@ -1,111 +1,142 @@
+@import "tailwindcss";
+
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --brand-500: #0ea5e9; /* sky-500 */
+  --brand-600: #0284c7; /* darker */
+  --muted: #6b7280;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
+  color: #0f172a;
   background: var(--bg);
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+/* Small utility to give consistent card look across pages */
+.site-card {
+  background: var(--card);
+  border: 1px solid rgba(15,23,42,0.06);
+  box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+  border-radius: 12px;
+}
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
 }
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+/* Global hero and utility styles to match Home across pages */
+:root{
+  --primary:#0f1724; /* dark navy */
+  --accent:#1e90ff; /* bright blue */
+  --glass: rgba(255,255,255,0.6);
+}
+.hero{
+  background: linear-gradient(180deg, rgba(30,144,255,0.04), rgba(255,255,255,0));
+  padding: 72px 6vw;
+  display:flex;
+  align-items:center;
+  gap:48px;
+}
+.hero-inner{
+  max-width:980px;
+}
+.hero-badge{
+  display:inline-block;
+  color:var(--accent);
+  font-weight:700;
+  letter-spacing:0.08em;
+  font-size:12px;
+  margin-bottom:16px;
+}
+.hero-title{
+  color:var(--primary);
+  font-size:48px;
+  line-height:1.02;
+  margin:0 0 18px 0;
+  font-weight:800;
+  text-shadow: 0 6px 18px rgba(14,30,37,0.04);
+}
+.hero-sub{
+  color:var(--muted);
+  font-size:18px;
+  max-width:720px;
+  margin-bottom:22px;
+}
+.cta-row{display:flex;gap:12px;}
+.btn{
+  border-radius:10px;
+  padding:12px 20px;
+  border:none;
+  cursor:pointer;
+  font-weight:600;
+}
+.btn-primary{
+  background: linear-gradient(90deg,var(--accent), #6bb8ff);
+  color:white;
+  box-shadow: 0 8px 30px rgba(30,144,255,0.12);
+}
+.btn-ghost{
+  background:transparent;
+  border:1px solid rgba(15,23,36,0.06);
+  color:var(--primary);
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
+/* Glassy cards used across pages */
+.card{background:var(--glass);backdrop-filter: blur(6px);border-radius:12px;padding:18px;box-shadow:0 6px 20px rgba(12,18,24,0.04);}
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
-}
+/* small tilt effect on hover for interactive polish */
+.interactive:hover{transform:translateY(-6px) rotate(-0.2deg);transition:transform .22s ease;}
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+/* Purple-centered hero variant for Home page (CodeHelp-like) */
+.hero--purple{
+  background: radial-gradient(1200px 400px at 50% 30%, rgba(139,92,246,0.08), transparent 20%),
+              radial-gradient(800px 300px at 80% 70%, rgba(99,102,241,0.06), transparent 25%),
+              linear-gradient(180deg,#ffffff,#fbf7ff);
+  padding: 96px 6vw;
+  align-items:center;
+  justify-content:center;
 }
+.hero--purple .hero-inner{max-width:960px;margin:0 auto;text-align:center}
+.hero--purple .hero-title{font-size:64px;color:#0b1220}
+.hero--purple .hero-sub{color:var(--muted);font-size:18px}
+.hero--purple .btn-primary{background:linear-gradient(90deg,#7c3aed,#6366f1);box-shadow:0 12px 40px rgba(99,102,241,0.12)}
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+/* Target Role input styling and suggestion chips */
+.target-label{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
 }
+.target-label .label-pill{
+  background:linear-gradient(90deg,#eef2ff,#f3e8ff);
+  color:#6b21a8;
+  font-weight:700;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+}
+.target-input{
+  box-shadow: 0 6px 24px rgba(15,23,42,0.04);
+  border-radius:14px;
+  padding:14px 16px;
+  border:1px solid rgba(15,23,42,0.06);
+}
+.role-chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.role-chip{cursor:pointer;padding:8px 12px;border-radius:999px;background:transparent;border:1px solid rgba(15,23,42,0.06);color:var(--primary);font-weight:600;font-size:14px;transition:all .18s ease}
+.role-chip:hover{transform:translateY(-4px);box-shadow:0 8px 22px rgba(15,23,42,0.06)}
+.role-chip--active{background:linear-gradient(90deg,#7c3aed,#6366f1);color:white;box-shadow:0 12px 30px rgba(99,102,241,0.12);border:none}
+
