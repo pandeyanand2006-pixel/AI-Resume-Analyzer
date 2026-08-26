@@ -9,7 +9,7 @@ import api from "../../services/api";
 
 import "./ResumePreview.css";
 
-const API_URL = "http://localhost:5000";
+const API_URL = import.meta.env.VITE_API_URL.replace(/\/api$/, "");
 
 const ResumePreview = () => {
   const { id } = useParams();

@@ -3,7 +3,7 @@ import AppLayout from "../../components/layout/AppLayout";
 import "../../styles/feature-pages.css";
 import "./JobOptimization.css";
 
-const API_URL = "http://localhost:5000";
+const API_URL = import.meta.env.VITE_API_URL.replace(/\/api$/, "");
 
 const JobOptimization = () => {
   const [jobDescription, setJobDescription] = useState("");
