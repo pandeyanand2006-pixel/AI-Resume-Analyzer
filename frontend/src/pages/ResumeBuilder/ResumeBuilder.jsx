@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import AppLayout from "../../components/layout/AppLayout";
 import "../../styles/feature-pages.css";
 import "./ResumeBuilder.css";
+import api from "../../services/api";
 
-const API_URL = import.meta.env.VITE_API_URL.replace(/\/api$/, "");
 
 const ResumeBuilder = () => {
   const navigate = useNavigate();
@@ -54,9 +54,11 @@ const ResumeBuilder = () => {
         targetRole: formData.targetRole,
         targetIndustry: formData.targetIndustry,
       };
-      const response = await fetch(`${API_URL}/api/resumes/builder`, { method:"POST", headers:{"Content-Type":"application/json",Authorization:`Bearer ${token}`}, credentials:"include", body: JSON.stringify(payload)});
-      const data = await response.json();
-      if (!response.ok) throw new Error(data?.message || `Request failed with status ${response.status}`);
+      const response = await api.post("/resumes/builder", payload);
+      const data = response.data;
+if (!response.status || response.status < 200 || response.status >= 300) {
+  throw new Error(data?.message || `Request failed with status ${response.status}`);
+}
       if (!data.success || !data.resume) throw new Error(data?.message || "Resume was not created.");
       const resumeId = data.resume._id; if (!resumeId) throw new Error("Server did not return resume ID.");
       navigate(`/resume-preview/${resumeId}`);
