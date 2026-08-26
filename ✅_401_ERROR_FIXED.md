@@ -83,7 +83,7 @@ Try any question:
 
 ### Issue 1: Wrong Model ✅ FIXED
 - Was: `GROQ_MODEL=openai/gpt-oss-120b`
-- Now: `GROQ_MODEL=llama-3.1-8b-instant`
+- Now: `GROQ_MODEL=openai/gpt-oss-120bt`
 
 ### Issue 2: 401 Unauthorized ✅ FIXED
 - Was: Routes required authentication
@@ -96,7 +96,7 @@ Try any question:
 ### Backend Status:
 - ✅ Running on http://localhost:5000
 - ✅ MongoDB connected
-- ✅ Correct model: `llama-3.1-8b-instant`
+- ✅ Correct model: `openai/gpt-oss-120b`
 - ✅ Routes updated: No authentication required
 - ✅ Ready to receive requests
 
@@ -148,7 +148,7 @@ You should see:
 ```
 [Career Assistant] POST /chat
 === CHAT REQUEST RECEIVED ===
-Calling Groq API with model: llama-3.1-8b-instant
+Calling Groq API with model: openai/gpt-oss-120b
 Got AI response, length: XXX
 Response sent successfully
 ```
@@ -189,7 +189,7 @@ If you want to keep authentication, you would need to:
 ## 📝 Files Modified
 
 ### 1. `backend/.env`
-Changed model from `openai/gpt-oss-120b` to `llama-3.1-8b-instant`
+Changed model from `openai/gpt-oss-120b` to `openai/gpt-oss-120b`
 
 ### 2. `backend/routes/careerAssistantRoutes.js`
 Removed authentication requirement (`protect` middleware)
@@ -282,7 +282,7 @@ Applied all changes
 
 *Backend: http://localhost:5000*  
 *Frontend: http://localhost:5173 or 5176*  
-*Model: llama-3.1-8b-instant*  
+*Model: openai/gpt-oss-120b*  
 *Authentication: Removed from AI Chat*  
 *Status: WORKING* ✅
 

@@ -2,7 +2,7 @@
 
 **Status**: ✅ **WORKING**  
 **Date**: August 23, 2026  
-**Model**: `llama-3.1-8b-instant` (Active & Working)
+**Model**: `openai/gpt-oss-120b` (Active & Working)
 
 ---
 
@@ -24,12 +24,12 @@ Changed to: `llama-3.1-8b-instant` → **Active & Working!**
 1. **`backend/controllers/careerAssistantController.js`**
    - Completely rewritten for simplicity
    - Uses Groq SDK directly
-   - Model: `llama-3.1-8b-instant`
+   - Model: `openai/gpt-oss-120b`
    - Added extensive logging
 
 2. **`backend/services/groqService.js`**
    - Updated `generateAIResponse` function
-   - Model: `llama-3.1-8b-instant`
+   - Model: `openai/gpt-oss-120b`
    - Enhanced error handling
 
 3. **`backend/routes/careerAssistantRoutes.js`**
@@ -44,7 +44,7 @@ Changed to: `llama-3.1-8b-instant` → **Active & Working!**
 - ✅ Running on `http://localhost:5000`
 - ✅ MongoDB connected
 - ✅ Groq API key configured
-- ✅ Model: `llama-3.1-8b-instant`
+- ✅ Model: `openai/gpt-oss-120b`
 - ✅ All routes working
 
 ### Frontend:
@@ -82,7 +82,7 @@ http://localhost:5173/career-assistant
 
 ### Groq Model Used:
 ```javascript
-model: "llama-3.1-8b-instant"
+model: "openai/gpt-oss-120b"
 ```
 
 **Why this model?**
