@@ -1,0 +1,106 @@
+/* ============================================
+   BADGE COMPONENT - Status Indicators
+============================================ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-1);
+  padding: var(--spacing-1) var(--spacing-3);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+/* ============================================
+   BADGE SIZES
+============================================ */
+
+.badge--sm {
+  padding: 2px var(--spacing-2);
+  font-size: 11px;
+}
+
+.badge--md {
+  padding: var(--spacing-1) var(--spacing-3);
+  font-size: var(--font-size-xs);
+}
+
+/* ============================================
+   BADGE VARIANTS
+============================================ */
+
+.badge--primary {
+  background: var(--color-primary-100);
+  color: var(--color-primary-700);
+}
+
+.badge--secondary {
+  background: var(--color-gray-100);
+  color: var(--color-gray-700);
+}
+
+.badge--success {
+  background: var(--color-success-bg);
+  color: var(--color-success-dark);
+}
+
+.badge--warning {
+  background: var(--color-warning-bg);
+  color: var(--color-warning-dark);
+}
+
+.badge--error {
+  background: var(--color-error-bg);
+  color: var(--color-error-dark);
+}
+
+.badge--info {
+  background: var(--color-info-bg);
+  color: var(--color-info-dark);
+}
+
+/* ============================================
+   BADGE WITH ICON
+============================================ */
+
+.badge svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* ============================================
+   BADGE PULSE (for AI/Live indicators)
+============================================ */
+
+.badge--pulse {
+  position: relative;
+}
+
+.badge--pulse::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: var(--radius-full);
+  background: currentColor;
+  opacity: 0.3;
+  animation: badgePulse 2s infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+}

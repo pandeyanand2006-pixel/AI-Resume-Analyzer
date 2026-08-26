@@ -1,0 +1,58 @@
+/* My Resumes - Dashboard matched interactive */
+.resume-versions-page{ display:flex; flex-direction:column; gap:18px; max-width:1280px; margin:0 auto; }
+
+.resume-versions-header{
+  background: linear-gradient(135deg, #EAFBFF 0%, #EEF2FF 100%);
+  border:1px solid rgba(255,255,255,0.9);
+  border-radius:24px;
+  box-shadow:0 10px 40px rgba(0,0,0,0.06);
+  padding:24px;
+  display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+}
+.resume-versions-header h1{ font-size:22px; font-weight:800; color:#0F172A; letter-spacing:-0.02em; margin:0; }
+.resume-versions-header p{ font-size:13px; color:#64748B; margin:4px 0 0; }
+.resume-versions-header button{
+  border-radius:999px !important; font-weight:800 !important;
+  background:linear-gradient(135deg,#22C7D6,#4F8CFF) !important; color:#fff !important; border:none !important;
+  box-shadow:0 8px 24px rgba(34,199,214,0.28) !important;
+}
+
+.resume-versions-actions{ display:flex; justify-content:flex-end; }
+
+.resume-versions-list{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+.resume-version-card{
+  background:#fff !important; border:1px solid #EEF2FF !important; border-radius:20px !important;
+  box-shadow:0 10px 40px rgba(0,0,0,0.06) !important; padding:18px !important;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease !important;
+}
+.resume-version-card:hover{ transform:translateY(-3px) !important; box-shadow:0 16px 48px rgba(0,0,0,0.09) !important; border-color:#CFFAFE !important; }
+.resume-version-card--active{ border-color:#22C7D6 !important; box-shadow:0 12px 32px rgba(34,199,214,0.15) !important; background:linear-gradient(135deg,#fff,#F0FDFA) !important; }
+.resume-version-card__header{ display:flex; gap:14px; align-items:flex-start; }
+.resume-version-card__icon{ width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg,#EAFBFF,#EEF2FF); border:1px solid #CFFAFE; color:#0E9BA8; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.resume-version-card__info{ flex:1; min-width:0; }
+.resume-version-card__title-row{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.resume-version-card__title-row h3{ font-size:14px; font-weight:800; color:#0F172A; margin:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.resume-version-card__meta{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:6px; font-size:12px; color:#64748B; }
+.resume-version-card__meta span{ display:inline-flex; align-items:center; gap:6px; background:#F8FAFC; border:1px solid #EEF2FF; padding:4px 8px; border-radius:999px; font-weight:600; }
+.resume-version-card__actions{ display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; padding-top:14px; border-top:1px solid #F1F5F9; }
+.resume-version-card__actions button{ border-radius:999px !important; font-weight:700 !important; font-size:12px !important; }
+.resume-version-card__delete{ color:#DC2626 !important; }
+.resume-version-card__delete:hover{ background:#FEF2F2 !important; border-color:#FECACA !important; }
+
+.resume-versions-empty{
+  background:#fff !important; border:1px solid #EEF2FF !important; border-radius:20px !important;
+  box-shadow:0 10px 40px rgba(0,0,0,0.06) !important; padding:40px 24px !important; text-align:center !important;
+}
+.resume-versions-empty h3{ font-size:16px; font-weight:800; color:#0F172A; margin:12px 0 6px; }
+.resume-versions-empty p{ font-size:13px; color:#64748B; margin:0 0 16px; }
+.resume-versions-loading{
+  background:#fff; border:1px solid #EEF2FF; border-radius:20px; box-shadow:0 10px 40px rgba(0,0,0,0.06); padding:40px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:12px;
+}
+.spinner{ width:32px; height:32px; border:3px solid #E2E8F0; border-top-color:#22C7D6; border-radius:999px; animation:spin 0.8s linear infinite; }
+@keyframes spin{ to{ transform:rotate(360deg); } }
+
+@media(max-width:900px){ .resume-versions-list{ grid-template-columns:1fr; } }
+@media(max-width:640px){
+  .resume-versions-header{ padding:18px; border-radius:18px; }
+  .resume-versions-header h1{ font-size:18px; }
+}

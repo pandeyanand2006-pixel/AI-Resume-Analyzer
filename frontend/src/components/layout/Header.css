@@ -1,0 +1,139 @@
+/* ============================================
+   HEADER - Landing Page Navigation - Fixed aesthetics & spacing
+============================================ */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid #E2E8F0;
+  transition: all 200ms ease;
+}
+
+.header__container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+/* LOGO */
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.header__logo:hover { opacity: 0.9; }
+.header__logo-icon { color: #22C7D6; flex-shrink: 0; }
+.header__logo-text {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #0F172A;
+  letter-spacing: -0.03em;
+}
+.header__logo-accent {
+  background: linear-gradient(135deg, #22C7D6 0%, #4F8CFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* NAV - aesthetic spacing between Features / How It Works / Help */
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex: 1;
+  justify-content: center;
+}
+.header__nav-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: #475569;
+  text-decoration: none;
+  transition: color 150ms ease;
+  position: relative;
+  white-space: nowrap;
+  padding: 6px 2px;
+}
+.header__nav-link:hover { color: #0F172A; }
+.header__nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(135deg, #22C7D6 0%, #4F8CFF 100%);
+  transform: scaleX(0);
+  transition: transform 200ms ease;
+  border-radius: 999px;
+}
+.header__nav-link:hover::after { transform: scaleX(1); }
+
+/* ACTIONS - aesthetic spacing between Login and Get Started */
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+.header__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  height: 42px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 180ms ease;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+.header__btn--ghost {
+  color: #334155;
+  background: transparent;
+  border-color: #E2E8F0;
+}
+.header__btn--ghost:hover {
+  color: #0F172A;
+  background: #F8FAFC;
+  border-color: #CBD5E1;
+}
+.header__btn--primary {
+  background: linear-gradient(135deg, #22C7D6 0%, #4F8CFF 100%);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 6px 18px rgba(34,199,214,0.28);
+}
+.header__btn--primary:hover {
+  box-shadow: 0 10px 24px rgba(34,199,214,0.34);
+  transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .header__nav { gap: 20px; }
+  .header__container { gap: 16px; }
+}
+@media (max-width: 768px) {
+  .header__container { padding: 0 16px; height: 64px; }
+  .header__nav { display: none; }
+  .header__logo-text { font-size: 19px; }
+  .header__btn { padding: 0 16px; height: 38px; font-size: 13px; }
+}
+@media (max-width: 480px) {
+  .header__btn--ghost { display: none; }
+}

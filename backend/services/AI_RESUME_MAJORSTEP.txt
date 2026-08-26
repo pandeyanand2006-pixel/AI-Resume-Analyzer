@@ -1,0 +1,1768 @@
+
+MASTER PROJECT INSTRUCTION
+AI CAREER INTELLIGENCE PLATFORM
+============================================================
+
+You are the lead full-stack software engineer responsible for
+understanding, improving, and extending my existing project.
+
+IMPORTANT:
+DO NOT rebuild the project from scratch.
+
+This is an EXISTING working project.
+
+Your first responsibility is to completely understand the
+existing codebase, architecture, database models, APIs,
+frontend routes, authentication, AI integration, and current
+features BEFORE modifying anything.
+
+The goal is to transform the current AI Resume Analyzer /
+Job Matcher into a complete AI Career Intelligence Platform.
+
+============================================================
+1. EXISTING PROJECT — UNDERSTAND THIS FIRST
+============================================================
+
+The current application already contains functionality related
+to:
+
+- User registration
+- User login
+- JWT authentication
+- Resume upload
+- PDF resume text extraction
+- DOCX resume text extraction
+- AI resume analysis
+- ATS score
+- Resume skills extraction
+- Resume keywords extraction
+- Resume section detection
+- Resume strengths
+- Resume improvement suggestions
+- Resume history
+- Resume deletion
+- Skill gap analysis
+- Target job role analysis
+- Job matching
+- Matched skills
+- Missing skills
+- Job match percentage
+- Job database
+- React frontend
+- Express backend
+- MongoDB database
+- Security middleware
+- CORS configuration
+- Rate limiting
+- Helmet
+- Request validation
+- Centralized error handling
+- Jest/Supertest tests
+- CI workflow
+
+The existing backend contains routes similar to:
+
+/api/auth
+/api/resumes
+/api/skill-gap
+/api/job-matching
+/api/health
+
+The existing project uses authentication middleware to protect
+user-specific resources.
+
+Do NOT remove or break these features.
+
+============================================================
+2. FIRST TASK — COMPLETE CODEBASE AUDIT
+============================================================
+
+Before writing code, inspect the ENTIRE repository.
+
+Inspect:
+
+frontend/
+backend/
+package.json files
+environment configuration
+routes
+controllers
+models
+middleware
+services
+components
+pages
+context
+API services
+tests
+documentation
+README
+CI configuration
+
+Understand:
+
+1. How authentication works
+2. How JWT tokens are stored
+3. How the frontend communicates with backend
+4. How resume uploads work
+5. How PDF/DOCX extraction works
+6. How AI analysis works
+7. How ATS score is calculated
+8. How skills are stored
+9. How keywords are stored
+10. How resume history works
+11. How skill gap analysis works
+12. How job matching works
+13. How jobs are stored
+14. How errors are handled
+15. How validation works
+16. How tests work
+17. How environment variables work
+18. How frontend routing works
+19. How dashboard currently works
+20. How current UI is structured
+
+Do not assume anything.
+
+Read the actual code.
+
+Create a temporary internal architecture summary before
+implementing changes.
+
+============================================================
+3. GOLDEN RULES
+============================================================
+
+RULE 1:
+DO NOT rewrite working features unnecessarily.
+
+RULE 2:
+DO NOT remove existing APIs unless absolutely necessary.
+
+RULE 3:
+DO NOT break existing frontend routes.
+
+RULE 4:
+DO NOT break JWT authentication.
+
+RULE 5:
+DO NOT expose API keys or secrets.
+
+RULE 6:
+DO NOT hardcode production credentials.
+
+RULE 7:
+Do not create duplicate functionality.
+
+RULE 8:
+Reuse existing components, services, models, utilities,
+middleware and API patterns whenever possible.
+
+RULE 9:
+Maintain clean separation between:
+
+Frontend
+Backend
+Database
+AI services
+
+RULE 10:
+Every new feature must be integrated into the existing
+architecture instead of being bolted on randomly.
+
+RULE 11:
+After every major feature, run tests and verify existing
+features still work.
+
+RULE 12:
+If you discover an existing bug, fix it only when the fix
+does not break existing functionality.
+
+RULE 13:
+Use production-quality code.
+
+RULE 14:
+Use responsive UI.
+
+RULE 15:
+Use accessible UI.
+
+RULE 16:
+Handle loading, empty, success and error states.
+
+RULE 17:
+Never trust client-side authentication or authorization.
+
+RULE 18:
+All user-specific database queries must verify ownership.
+
+RULE 19:
+Do not send unnecessary sensitive resume data to the client.
+
+RULE 20:
+Do not silently change the existing tech stack unless there
+is a strong technical reason.
+
+============================================================
+4. PRODUCT VISION
+============================================================
+
+Transform the current application into:
+
+        AI CAREER INTELLIGENCE PLATFORM
+
+The platform should help a user:
+
+1. Upload a resume
+2. Analyze the resume
+3. Understand ATS score
+4. Understand strengths
+5. Understand weaknesses
+6. Identify missing skills
+7. Match with jobs
+8. Optimize resume for specific jobs
+9. Generate a professional resume
+10. Build a career roadmap
+11. Practice interviews with AI
+12. Track career progress
+13. Compare resume versions
+14. Search/recommend jobs
+15. Talk to an AI career assistant
+
+The final product should feel like a professional SaaS
+application rather than a simple college CRUD project.
+
+============================================================
+5. PHASE 1 — AI RESUME BUILDER
+============================================================
+
+Create a complete AI Resume Builder.
+
+Add a new section:
+
+/resume-builder
+
+or another route consistent with the existing routing system.
+
+The user should be able to enter:
+
+Personal Information:
+- Full name
+- Email
+- Phone
+- Location
+- LinkedIn
+- GitHub
+- Portfolio
+
+Professional Information:
+- Professional summary
+- Career objective
+
+Education:
+- Degree
+- Institution
+- Location
+- Start date
+- End date
+- GPA/CGPA
+
+Experience:
+- Company
+- Position
+- Location
+- Start date
+- End date
+- Responsibilities
+- Achievements
+
+Projects:
+- Project name
+- Description
+- Technologies
+- GitHub URL
+- Live URL
+
+Skills:
+- Technical skills
+- Soft skills
+- Tools
+- Languages
+- Frameworks
+
+Certifications:
+- Certification name
+- Organization
+- Date
+- Credential URL
+
+Achievements:
+- Achievement
+- Description
+
+AI capabilities:
+
+Generate:
+- Professional summary
+- Career objective
+- Experience bullet points
+- Project descriptions
+- Achievement descriptions
+
+Allow AI to improve user-written content.
+
+Example:
+
+Input:
+"made ecommerce website using react"
+
+Output:
+"Developed a responsive e-commerce platform using React,
+implementing reusable components, product filtering,
+shopping cart functionality and optimized state management."
+
+Add:
+
+- Resume preview
+- Professional templates
+- ATS-friendly template
+- Modern template
+- Minimal template
+- Developer template
+
+Allow:
+
+- Save resume
+- Edit resume
+- Duplicate resume
+- Delete resume
+- Preview resume
+- Download PDF
+- Export resume
+
+Store generated resumes in MongoDB.
+
+Do not destroy existing uploaded resume functionality.
+
+============================================================
+6. PHASE 2 — JOB-SPECIFIC RESUME OPTIMIZATION
+============================================================
+
+Create:
+
+Resume + Job Description
+        ↓
+AI Optimization
+        ↓
+Optimized Resume
+
+The user should be able to paste a job description.
+
+Analyze:
+
+- Required skills
+- Preferred skills
+- Keywords
+- Experience requirements
+- Technologies
+- Responsibilities
+- Education requirements
+
+Compare against resume.
+
+Display:
+
+Current ATS Score
+Optimized ATS Score
+
+Example:
+
+Current:
+67%
+
+Optimized:
+84%
+
+Show:
+
+MATCHED KEYWORDS
+- React
+- Node.js
+- MongoDB
+
+MISSING KEYWORDS
+- Docker
+- AWS
+- TypeScript
+
+MISSING SKILLS
+- Docker
+- AWS
+
+RECOMMENDATIONS
+- Add Docker experience
+- Mention REST API development
+- Add measurable project achievements
+
+AI should suggest changes section by section.
+
+Example:
+
+Current:
+"Worked on web application."
+
+Suggested:
+"Developed a full-stack web application using React,
+Node.js and MongoDB with RESTful APIs."
+
+Important:
+
+Do NOT automatically change the user's resume without
+confirmation.
+
+Provide:
+
+[Apply Suggestion]
+
+buttons.
+
+Store optimization history.
+
+============================================================
+7. PHASE 3 — AI CAREER ROADMAP
+============================================================
+
+Extend the existing skill-gap functionality.
+
+Route:
+
+/career-roadmap
+
+User selects target role:
+
+Examples:
+
+- Full Stack Developer
+- Frontend Developer
+- Backend Developer
+- Java Developer
+- Python Developer
+- Data Analyst
+- Data Scientist
+- Machine Learning Engineer
+- DevOps Engineer
+- Cloud Engineer
+- Software Engineer
+
+System analyzes:
+
+Current Skills
++
+Target Role
++
+Missing Skills
++
+Experience
++
+Resume
+
+Then generates:
+
+PERSONALIZED CAREER ROADMAP
+
+Example:
+
+Target:
+Full Stack Developer
+
+Current level:
+Intermediate
+
+Missing:
+Docker
+AWS
+Redis
+TypeScript
+System Design
+
+Generate:
+
+MONTH 1
+TypeScript
+Advanced JavaScript
+React patterns
+
+MONTH 2
+Node.js
+REST APIs
+Authentication
+Redis
+
+MONTH 3
+Docker
+AWS
+Deployment
+System Design
+
+For each skill provide:
+
+- Why it matters
+- Difficulty
+- Estimated learning time
+- Prerequisites
+- Learning objectives
+- Project recommendation
+- Practice tasks
+- Completion status
+
+Allow user to mark:
+
+[Not Started]
+[In Progress]
+[Completed]
+
+Track progress.
+
+Display progress percentage.
+
+Store roadmap in MongoDB.
+
+============================================================
+8. PHASE 4 — AI INTERVIEWER
+============================================================
+
+Create an AI-powered interview preparation system.
+
+Route:
+
+/interview
+
+User chooses:
+
+Role:
+- Frontend Developer
+- Backend Developer
+- Full Stack Developer
+- Java Developer
+- Python Developer
+- Data Analyst
+- ML Engineer
+
+Experience level:
+
+- Beginner
+- Intermediate
+- Advanced
+
+Interview type:
+
+- Technical
+- HR
+- Behavioral
+- Mixed
+
+AI generates interview questions.
+
+Example:
+
+Question:
+"Explain the difference between useState and useEffect."
+
+User submits answer.
+
+AI evaluates:
+
+- Technical correctness
+- Communication
+- Clarity
+- Confidence
+- Completeness
+- Relevance
+
+Provide score:
+
+Technical Knowledge: 82%
+Communication: 76%
+Clarity: 88%
+Accuracy: 84%
+
+Provide:
+
+Strengths
+Weaknesses
+Improvement suggestions
+
+Then ask the next question.
+
+At the end:
+
+INTERVIEW REPORT
+
+Overall Score
+Technical Score
+Communication Score
+Problem Solving Score
+Confidence Score
+
+Strong Areas
+
+Weak Areas
+
+Recommended Topics
+
+Recommended Questions
+
+Store interview history.
+
+Allow users to review previous interviews.
+
+============================================================
+9. PHASE 5 — CAREER DASHBOARD
+============================================================
+
+Upgrade the existing dashboard.
+
+The dashboard should become the central career control center.
+
+Display:
+
+Welcome message
+
+Resume:
+
+Latest ATS Score
+Number of resumes
+Latest analysis date
+
+Skills:
+
+Total skills
+Matched skills
+Missing skills
+
+Jobs:
+
+Total matched jobs
+Best job match
+Average job match
+
+Career:
+
+Roadmap progress
+Interview score
+Skills completed
+
+Dashboard cards:
+
+ATS SCORE
+SKILL MATCH
+JOB MATCH
+ROADMAP PROGRESS
+INTERVIEW SCORE
+
+Charts:
+
+ATS Score History
+Skill Growth
+Job Match History
+Interview Performance
+Career Roadmap Progress
+
+Recommended actions:
+
+- Improve resume
+- Learn missing skill
+- Apply to matched job
+- Practice interview
+
+Create a professional responsive dashboard.
+
+============================================================
+10. PHASE 6 — RESUME VERSION COMPARISON
+============================================================
+
+Allow users to maintain multiple resume versions.
+
+Example:
+
+Resume V1
+Resume V2
+Resume V3
+
+Allow comparison.
+
+Compare:
+
+ATS Score
+Skills
+Keywords
+Sections
+Strengths
+Weaknesses
+
+Display:
+
+ADDED
++ Docker
++ AWS
++ TypeScript
+
+REMOVED
+- Old objective
+
+IMPROVED
+Experience section
+Project descriptions
+
+Show:
+
+ATS:
+
+Version 1: 62%
+Version 2: 74%
+Version 3: 84%
+
+Add visual comparison charts.
+
+Allow user to restore/download any version.
+
+============================================================
+11. PHASE 7 — JOB SEARCH AND RECOMMENDATION
+============================================================
+
+Improve the existing job matching functionality.
+
+Current system already compares resume skills with job
+requirements.
+
+Do not remove this functionality.
+
+Add:
+
+Job Search page.
+
+Filters:
+
+- Job title
+- Location
+- Remote
+- Experience
+- Salary
+- Job type
+- Skills
+
+Example:
+
+Search:
+Full Stack Developer
+
+Location:
+Remote
+
+Experience:
+0-2 years
+
+Display job cards:
+
+Company
+Job title
+Location
+Salary
+Experience
+Required skills
+Match percentage
+
+Sort:
+
+Best Match
+Highest Salary
+Newest
+Experience
+
+Recommended jobs should consider:
+
+Resume skills
+Missing skills
+Experience
+Target role
+
+Add:
+
+Save Job
+
+Apply Job
+
+Remove Saved Job
+
+Job Details
+
+Track application status:
+
+Saved
+Applied
+Interview
+Rejected
+Offer
+
+============================================================
+12. PHASE 8 — AI CAREER ASSISTANT
+============================================================
+
+Create:
+
+/career-assistant
+
+A chatbot specialized in career guidance.
+
+The AI assistant should have access only to the relevant
+authenticated user's career data.
+
+Possible questions:
+
+"Why is my ATS score low?"
+
+"What skills am I missing?"
+
+"What should I learn to become a backend developer?"
+
+"Which jobs match my resume?"
+
+"How can I improve my React skills?"
+
+"Improve my professional summary."
+
+"Prepare me for a Java interview."
+
+"Why am I not matching this job?"
+
+"Create a 3-month learning plan."
+
+The assistant should use the user's:
+
+- Resume analysis
+- Skills
+- Skill gaps
+- Job matches
+- Career roadmap
+- Interview history
+
+when relevant.
+
+Add chat history.
+
+Allow:
+
+New Chat
+Delete Chat
+Rename Chat
+
+Do not expose data belonging to another user.
+
+============================================================
+13. PHASE 9 — CAREER ANALYTICS
+============================================================
+
+Create:
+
+/analytics
+
+Track:
+
+ATS score over time
+Skill growth
+Job matching improvement
+Interview scores
+Roadmap progress
+Resume improvements
+
+Charts:
+
+ATS Score:
+V1 → V2 → V3
+
+Skills:
+JavaScript
+React
+Node.js
+Docker
+AWS
+
+Interview:
+
+Interview 1 → 62%
+Interview 2 → 71%
+Interview 3 → 83%
+
+Career Progress:
+
+Overall career readiness score.
+
+Create an overall score using transparent logic.
+
+Example:
+
+Resume:
+25%
+
+Skills:
+25%
+
+Job Match:
+20%
+
+Interview:
+20%
+
+Roadmap:
+10%
+
+Total:
+Career Readiness Score
+
+Clearly explain how the score is calculated.
+
+============================================================
+14. PHASE 10 — NOTIFICATIONS
+============================================================
+
+Create notification functionality.
+
+Examples:
+
+"Your ATS score increased from 68% to 81%."
+
+"You are now 90% matched with Full Stack Developer."
+
+"You completed Docker in your roadmap."
+
+"New recommended job available."
+
+"Your interview score improved by 12%."
+
+"Your resume needs improvement."
+
+Add notification center.
+
+Features:
+
+- Mark as read
+- Mark all as read
+- Delete notification
+- Notification count
+
+============================================================
+15. DATABASE DESIGN
+============================================================
+
+Before creating new models, inspect existing models.
+
+Reuse existing models where appropriate.
+
+Possible new models:
+
+ResumeBuilder
+ResumeVersion
+ResumeOptimization
+CareerRoadmap
+RoadmapProgress
+Interview
+InterviewQuestion
+SavedJob
+JobApplication
+CareerChat
+CareerMessage
+Notification
+
+Do not create duplicate models if equivalent models already
+exist.
+
+All documents must have proper user ownership.
+
+Example:
+
+user: ObjectId
+
+Use indexes where appropriate.
+
+============================================================
+16. API DESIGN
+============================================================
+
+Follow the existing backend API architecture.
+
+Possible endpoints:
+
+AUTH
+
+POST /api/auth/register
+POST /api/auth/login
+GET /api/auth/me
+
+RESUMES
+
+POST /api/resumes/upload
+GET /api/resumes
+GET /api/resumes/:id
+DELETE /api/resumes/:id
+POST /api/resumes/:id/analyze
+
+JOB MATCHING
+
+POST /api/job-matching/:resumeId
+
+SKILL GAP
+
+POST /api/skill-gap/:resumeId
+
+RESUME BUILDER
+
+POST /api/resume-builder
+GET /api/resume-builder
+GET /api/resume-builder/:id
+PUT /api/resume-builder/:id
+DELETE /api/resume-builder/:id
+POST /api/resume-builder/:id/generate-summary
+POST /api/resume-builder/:id/generate-experience
+POST /api/resume-builder/:id/generate-project
+
+RESUME OPTIMIZATION
+
+POST /api/resume-optimization/:resumeId
+GET /api/resume-optimization/:resumeId
+POST /api/resume-optimization/:id/apply
+
+ROADMAP
+
+POST /api/roadmap
+GET /api/roadmap
+GET /api/roadmap/:id
+PUT /api/roadmap/:id/progress
+
+INTERVIEW
+
+POST /api/interview/start
+POST /api/interview/:id/answer
+GET /api/interview/:id
+GET /api/interview/history
+
+JOBS
+
+GET /api/jobs
+GET /api/jobs/:id
+POST /api/jobs/:id/save
+DELETE /api/jobs/:id/save
+
+APPLICATIONS
+
+POST /api/applications
+GET /api/applications
+PUT /api/applications/:id
+
+CAREER ASSISTANT
+
+POST /api/career-assistant/chat
+GET /api/career-assistant/chats
+GET /api/career-assistant/chats/:id
+DELETE /api/career-assistant/chats/:id
+
+ANALYTICS
+
+GET /api/analytics/dashboard
+GET /api/analytics/ats
+GET /api/analytics/skills
+GET /api/analytics/interviews
+
+NOTIFICATIONS
+
+GET /api/notifications
+PUT /api/notifications/:id/read
+PUT /api/notifications/read-all
+DELETE /api/notifications/:id
+
+IMPORTANT:
+
+Before creating these APIs, inspect the existing API naming
+conventions and modify the plan to match the actual project.
+
+Do not blindly copy these endpoint names if the project uses
+another established convention.
+
+============================================================
+17. AI ARCHITECTURE
+============================================================
+
+Inspect the existing AI provider implementation.
+
+Do not unnecessarily replace the existing provider.
+
+Create a clean AI service abstraction.
+
+Example:
+
+services/
+    ai/
+        aiService.js
+        resumeAI.js
+        interviewAI.js
+        roadmapAI.js
+        careerAssistantAI.js
+        optimizationAI.js
+
+AI outputs must be structured.
+
+Prefer JSON responses when possible.
+
+Example:
+
+{
+  "summary": "...",
+  "skills": [],
+  "strengths": [],
+  "weaknesses": [],
+  "recommendations": []
+}
+
+Validate AI responses before storing them.
+
+Handle:
+
+AI timeout
+AI API failure
+Invalid AI response
+Rate limit
+Empty response
+
+Do not expose AI API keys to frontend.
+
+============================================================
+18. FRONTEND ARCHITECTURE
+============================================================
+
+Inspect existing frontend architecture first.
+
+Reuse existing:
+
+components
+layouts
+Header
+AuthContext
+API service
+styles
+buttons
+cards
+modals
+forms
+
+Create reusable components where possible.
+
+Example:
+
+components/
+    resume/
+    dashboard/
+    jobs/
+    interview/
+    roadmap/
+    analytics/
+    assistant/
+    notifications/
+
+Avoid giant components.
+
+Keep business logic separate from UI where possible.
+
+============================================================
+19. UI/UX REQUIREMENTS
+============================================================
+
+The final UI should look like a professional modern SaaS
+application.
+
+Use:
+
+- Responsive layout
+- Sidebar/dashboard navigation
+- Cards
+- Tables
+- Progress bars
+- Charts
+- Badges
+- Tabs
+- Modals
+- Toast notifications
+- Loading skeletons
+- Empty states
+- Error states
+
+Maintain the existing design language.
+
+Do not randomly change colors or layouts.
+
+Keep:
+
+- Consistent typography
+- Consistent spacing
+- Consistent buttons
+- Consistent card styles
+
+Mobile responsive is required.
+
+============================================================
+20. SECURITY
+============================================================
+
+Preserve existing security mechanisms.
+
+The project already uses security measures such as:
+
+Helmet
+CORS
+Rate limiting
+Input validation
+Centralized error handling
+
+Do not weaken them.
+
+Add:
+
+- Authorization checks
+- User ownership checks
+- Input sanitization
+- AI prompt input validation
+- Maximum AI request lengths
+- Upload validation
+- Secure file handling
+- Protection against prompt injection where appropriate
+- Protection against excessive AI requests
+
+Never return:
+
+JWT secret
+Database credentials
+AI API keys
+Private server paths
+
+============================================================
+21. TESTING
+============================================================
+
+Every new feature must have tests.
+
+Backend:
+
+Jest
+Supertest
+MongoDB memory database if appropriate
+
+Test:
+
+Authentication
+Authorization
+Resume builder
+Resume optimization
+Roadmap
+Interview
+Job search
+Saved jobs
+Applications
+Career assistant
+Analytics
+Notifications
+
+Test:
+
+Success
+Validation errors
+Unauthorized requests
+Forbidden requests
+Missing data
+Invalid IDs
+AI failure
+Database failure
+
+Do not finish a feature until tests pass.
+
+============================================================
+22. EXISTING TESTS
+============================================================
+
+Run the existing test suite BEFORE modifying the project.
+
+Record:
+
+PASS
+FAIL
+
+Then implement features.
+
+Run the test suite again.
+
+No existing feature should regress.
+
+If an existing test fails:
+
+1. Determine whether your change caused it.
+2. Fix the issue.
+3. Re-run tests.
+
+============================================================
+23. ERROR HANDLING
+============================================================
+
+Every frontend API call must handle:
+
+loading
+success
+error
+empty
+
+Every backend endpoint must return consistent JSON.
+
+Example:
+
+{
+  "success": true,
+  "message": "...",
+  "data": {}
+}
+
+Error:
+
+{
+  "success": false,
+  "message": "..."
+}
+
+Do not expose internal stack traces in production.
+
+============================================================
+24. PERFORMANCE
+============================================================
+
+Avoid unnecessary database queries.
+
+Use:
+
+- Pagination
+- MongoDB indexes
+- Lean queries where appropriate
+- Caching where useful
+- Debouncing
+- Lazy loading
+- Code splitting
+
+Do not run expensive AI operations repeatedly if the same
+result can safely be reused.
+
+============================================================
+25. ENVIRONMENT VARIABLES
+============================================================
+
+Never hardcode secrets.
+
+Use:
+
+MONGO_URI
+JWT_SECRET
+AI_API_KEY
+PORT
+FRONTEND_URL
+
+Inspect existing .env and .env.example.
+
+Never commit real secrets.
+
+If an existing example file contains a real credential,
+replace it with a placeholder.
+
+============================================================
+26. DOCUMENTATION
+============================================================
+
+Update README.md.
+
+Document:
+
+Project overview
+Features
+Architecture
+Tech stack
+Installation
+Environment variables
+Frontend setup
+Backend setup
+Database setup
+AI setup
+API documentation
+Testing
+Deployment
+
+Create:
+
+docs/
+    architecture.md
+    api.md
+    database.md
+    ai-system.md
+    security.md
+    deployment.md
+
+============================================================
+27. PROJECT ARCHITECTURE DOCUMENT
+============================================================
+
+Create a clear architecture diagram/document.
+
+Explain:
+
+User
+ ↓
+React Frontend
+ ↓
+Express API
+ ↓
+Authentication
+ ↓
+Controllers
+ ↓
+Services
+ ↓
+MongoDB
+ ↓
+AI Provider
+
+Explain every major module.
+
+============================================================
+28. FINAL PROJECT FLOW
+============================================================
+
+The final application should support this flow:
+
+USER
+ ↓
+LOGIN
+ ↓
+DASHBOARD
+ ↓
+UPLOAD RESUME
+ ↓
+AI ANALYSIS
+ ↓
+ATS SCORE
+ ↓
+SKILLS
+ ↓
+STRENGTHS
+ ↓
+WEAKNESSES
+ ↓
+SKILL GAP
+ ↓
+JOB MATCHING
+ ↓
+JOB-SPECIFIC OPTIMIZATION
+ ↓
+AI RESUME BUILDER
+ ↓
+CAREER ROADMAP
+ ↓
+INTERVIEW PREPARATION
+ ↓
+JOB SEARCH
+ ↓
+APPLICATION TRACKING
+ ↓
+CAREER ANALYTICS
+ ↓
+AI CAREER ASSISTANT
+
+============================================================
+29. DEVELOPMENT STRATEGY
+============================================================
+
+DO NOT implement everything in one giant uncontrolled change.
+
+Implement phase by phase.
+
+Order:
+
+PHASE 0
+Codebase audit
+
+PHASE 1
+AI Resume Builder
+
+PHASE 2
+Job-specific Resume Optimization
+
+PHASE 3
+AI Career Roadmap
+
+PHASE 4
+AI Interviewer
+
+PHASE 5
+Career Dashboard
+
+PHASE 6
+Resume Version Comparison
+
+PHASE 7
+Job Search & Recommendations
+
+PHASE 8
+AI Career Assistant
+
+PHASE 9
+Career Analytics
+
+PHASE 10
+Notifications
+
+PHASE 11
+Security hardening
+
+PHASE 12
+Testing
+
+PHASE 13
+Documentation
+
+PHASE 14
+Production deployment preparation
+
+============================================================
+30. AFTER EACH PHASE
+============================================================
+
+For every phase:
+
+1. Inspect existing implementation.
+2. Design database changes.
+3. Design backend APIs.
+4. Implement backend.
+5. Test backend.
+6. Implement frontend.
+7. Connect frontend to backend.
+8. Test frontend integration.
+9. Check authentication.
+10. Check authorization.
+11. Check responsive UI.
+12. Run existing tests.
+13. Fix regressions.
+14. Update documentation.
+
+Do not move to the next phase until the current phase is
+stable.
+
+============================================================
+31. DO NOT ASK ME TO REWRITE THE PROJECT
+============================================================
+
+You are extending an existing project.
+
+Do not tell me:
+
+"Create a new React project."
+
+"Create a new Express project."
+
+"Start from scratch."
+
+Instead:
+
+Inspect the existing project and modify it.
+
+============================================================
+32. GIT SAFETY
+============================================================
+
+Before major modifications:
+
+Create a clear checkpoint/commit if Git is available.
+
+Use meaningful commits:
+
+feat: add AI resume builder
+feat: add resume optimization
+feat: add career roadmap
+feat: add AI interviewer
+feat: improve dashboard
+feat: add resume comparison
+feat: add job search
+feat: add career assistant
+feat: add analytics
+feat: add notifications
+
+Do not delete large portions of the repository without
+explaining why.
+
+============================================================
+33. IMPORTANT AGENT BEHAVIOR
+============================================================
+
+When you discover something unexpected:
+
+STOP.
+
+Inspect the relevant files.
+
+Understand why the existing implementation works that way.
+
+Then choose the least disruptive solution.
+
+Do not guess.
+
+Do not overwrite working code blindly.
+
+Do not create duplicate APIs.
+
+Do not create duplicate models.
+
+Do not create duplicate components.
+
+Reuse existing architecture whenever possible.
+
+============================================================
+34. COMPLETION CRITERIA
+============================================================
+
+The project is considered complete only when:
+
+[ ] Existing authentication works
+[ ] Existing resume upload works
+[ ] Existing PDF extraction works
+[ ] Existing DOCX extraction works
+[ ] Existing AI analysis works
+[ ] Existing ATS scoring works
+[ ] Existing skill extraction works
+[ ] Existing skill gap works
+[ ] Existing job matching works
+
+AND:
+
+[ ] AI Resume Builder works
+[ ] Resume PDF export works
+[ ] Job-specific optimization works
+[ ] AI Career Roadmap works
+[ ] Roadmap progress works
+[ ] AI Interviewer works
+[ ] Interview history works
+[ ] Career Dashboard works
+[ ] Resume version comparison works
+[ ] Job Search works
+[ ] Saved Jobs works
+[ ] Application tracking works
+[ ] AI Career Assistant works
+[ ] Career Analytics works
+[ ] Notifications work
+
+AND:
+
+[ ] Authentication tested
+[ ] Authorization tested
+[ ] API validation tested
+[ ] AI failure handling tested
+[ ] Upload validation tested
+[ ] Existing tests pass
+[ ] New tests pass
+[ ] No secrets exposed
+[ ] README updated
+[ ] Architecture documentation updated
+[ ] API documentation updated
+[ ] Deployment documentation updated
+[ ] Responsive UI verified
+
+============================================================
+35. FINAL RESPONSE FORMAT
+============================================================
+
+After completing each phase, report:
+
+PHASE:
+Feature name
+
+STATUS:
+Completed / Partially Completed / Blocked
+
+FILES CREATED:
+...
+
+FILES MODIFIED:
+...
+
+DATABASE CHANGES:
+...
+
+API ENDPOINTS:
+...
+
+FRONTEND ROUTES:
+...
+
+FEATURES IMPLEMENTED:
+...
+
+TESTS:
+Passed / Failed
+
+KNOWN ISSUES:
+...
+
+NEXT PHASE:
+...
+
+Do not claim a feature is complete if it has not actually been
+implemented and tested.
+
+============================================================
+FINAL OBJECTIVE
+============================================================
+
+Build a professional AI Career Intelligence Platform from the
+existing AI Resume Analyzer.
+
+The final application should demonstrate:
+
+Full-stack development
+React
+Node.js
+Express
+MongoDB
+JWT authentication
+REST APIs
+AI integration
+Resume parsing
+ATS analysis
+Natural language processing
+Job matching
+Skill gap analysis
+Recommendation systems
+AI interview evaluation
+Analytics
+Security
+Testing
+Production architecture
+
+The result should be suitable for:
+
+Final-year B.Tech project
+Portfolio
+GitHub
+Resume
+Placement interviews
+Technical demonstrations
+Viva
+
+MOST IMPORTANT:
+
+Understand first.
+Modify second.
+Test third.
+Document fourth.
+
+Never destroy working functionality just to implement a new
+feature.
+============================================================
+END OF MASTER PROMPT

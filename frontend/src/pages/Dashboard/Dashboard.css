@@ -1,0 +1,12 @@
+.resume-builder-link {
+  text-decoration: none;
+  background: #2563eb;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.resume-builder-link:hover {
+  background: #1d4ed8;
+}

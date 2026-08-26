@@ -1,0 +1,379 @@
+/* ============================================
+   EMPTY STATE COMPONENT - ResumeAI Design System
+   Professional empty state displays with consistency
+============================================ */
+
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-16) var(--space-6);
+  text-align: center;
+  min-height: 320px;
+}
+
+.empty-state__content {
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+/* ============================================
+   ICON
+============================================ */
+
+.empty-state__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  font-size: 3.5rem;
+  margin-bottom: var(--space-2);
+  animation: empty-fade-in 0.5s ease-out;
+  transition: all var(--transition-base);
+}
+
+.empty-state__icon svg {
+  width: 64px;
+  height: 64px;
+  color: var(--text-tertiary);
+}
+
+/* Icon variants */
+.empty-state--info .empty-state__icon {
+  background: var(--primary-soft);
+  border-color: var(--primary);
+}
+
+.empty-state--info .empty-state__icon svg {
+  color: var(--primary);
+}
+
+.empty-state--success .empty-state__icon {
+  background: var(--success-soft);
+  border-color: var(--success);
+}
+
+.empty-state--success .empty-state__icon svg {
+  color: var(--success);
+}
+
+.empty-state--error .empty-state__icon {
+  background: var(--error-soft);
+  border-color: var(--error);
+}
+
+.empty-state--error .empty-state__icon svg {
+  color: var(--error);
+}
+
+.empty-state--warning .empty-state__icon {
+  background: var(--warning-soft);
+  border-color: var(--warning);
+}
+
+.empty-state--warning .empty-state__icon svg {
+  color: var(--warning);
+}
+
+/* ============================================
+   TITLE
+============================================ */
+
+.empty-state__title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin: 0;
+  line-height: var(--leading-tight);
+  animation: empty-fade-in 0.6s ease-out;
+}
+
+/* ============================================
+   DESCRIPTION
+============================================ */
+
+.empty-state__description {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+  animation: empty-fade-in 0.7s ease-out;
+}
+
+/* ============================================
+   ACTIONS
+============================================ */
+
+.empty-state__actions {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: var(--space-3);
+  animation: empty-fade-in 0.8s ease-out;
+}
+
+/* ============================================
+   SIZE VARIANTS
+============================================ */
+
+/* Small */
+.empty-state--small {
+  padding: var(--space-10) var(--space-4);
+  min-height: 240px;
+}
+
+.empty-state--small .empty-state__content {
+  max-width: 400px;
+  gap: var(--space-3);
+}
+
+.empty-state--small .empty-state__icon {
+  width: 80px;
+  height: 80px;
+  font-size: 2.5rem;
+  margin-bottom: var(--space-1);
+}
+
+.empty-state--small .empty-state__icon svg {
+  width: 48px;
+  height: 48px;
+}
+
+.empty-state--small .empty-state__title {
+  font-size: var(--text-xl);
+}
+
+.empty-state--small .empty-state__description {
+  font-size: var(--text-sm);
+}
+
+/* Default - already styled above */
+
+/* Large */
+.empty-state--large {
+  padding: var(--space-24) var(--space-8);
+  min-height: 480px;
+}
+
+.empty-state--large .empty-state__content {
+  max-width: 560px;
+  gap: var(--space-5);
+}
+
+.empty-state--large .empty-state__icon {
+  width: 160px;
+  height: 160px;
+  font-size: 5rem;
+  margin-bottom: var(--space-3);
+}
+
+.empty-state--large .empty-state__icon svg {
+  width: 80px;
+  height: 80px;
+}
+
+.empty-state--large .empty-state__title {
+  font-size: var(--text-3xl);
+}
+
+.empty-state--large .empty-state__description {
+  font-size: var(--text-lg);
+}
+
+/* ============================================
+   ILLUSTRATION VARIANT
+============================================ */
+
+.empty-state--illustration .empty-state__icon {
+  background: transparent;
+  border: none;
+  width: auto;
+  height: auto;
+  max-width: 240px;
+}
+
+.empty-state--illustration .empty-state__icon img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================
+   COMPACT VARIANT (inline)
+============================================ */
+
+.empty-state--compact {
+  padding: var(--space-8) var(--space-4);
+  min-height: auto;
+}
+
+.empty-state--compact .empty-state__content {
+  flex-direction: row;
+  gap: var(--space-4);
+  text-align: left;
+  max-width: 100%;
+}
+
+.empty-state--compact .empty-state__icon {
+  width: 64px;
+  height: 64px;
+  font-size: 2rem;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.empty-state--compact .empty-state__icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.empty-state--compact .empty-state__title {
+  font-size: var(--text-lg);
+}
+
+.empty-state--compact .empty-state__description {
+  font-size: var(--text-sm);
+}
+
+.empty-state--compact .empty-state__actions {
+  justify-content: flex-start;
+  margin-top: var(--space-2);
+}
+
+/* ============================================
+   ANIMATIONS
+============================================ */
+
+@keyframes empty-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes empty-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Subtle floating animation for icon */
+.empty-state__icon {
+  animation: empty-fade-in 0.5s ease-out, empty-float 3s ease-in-out infinite;
+  animation-delay: 0s, 0.5s;
+}
+
+/* ============================================
+   RESPONSIVE
+============================================ */
+
+@media (max-width: 768px) {
+  .empty-state {
+    padding: var(--space-12) var(--space-4);
+    min-height: 280px;
+  }
+
+  .empty-state--large {
+    padding: var(--space-16) var(--space-6);
+    min-height: 360px;
+  }
+
+  .empty-state--large .empty-state__icon {
+    width: 120px;
+    height: 120px;
+    font-size: 4rem;
+  }
+
+  .empty-state--large .empty-state__icon svg {
+    width: 64px;
+    height: 64px;
+  }
+
+  .empty-state--large .empty-state__title {
+    font-size: var(--text-2xl);
+  }
+
+  .empty-state--compact .empty-state__content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .empty-state--compact .empty-state__actions {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 639px) {
+  .empty-state {
+    padding: var(--space-10) var(--space-4);
+    min-height: 240px;
+  }
+
+  .empty-state__content {
+    max-width: 100%;
+  }
+
+  .empty-state__icon {
+    width: 96px;
+    height: 96px;
+    font-size: 3rem;
+  }
+
+  .empty-state__icon svg {
+    width: 52px;
+    height: 52px;
+  }
+
+  .empty-state__title {
+    font-size: var(--text-xl);
+  }
+
+  .empty-state__description {
+    font-size: var(--text-sm);
+  }
+
+  .empty-state__actions {
+    flex-direction: column;
+    width: 100%;
+    gap: var(--space-2);
+  }
+
+  .empty-state__actions .btn {
+    width: 100%;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .empty-state__icon,
+  .empty-state__title,
+  .empty-state__description,
+  .empty-state__actions {
+    animation: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .empty-state__icon {
+    border-width: 2px;
+  }
+}

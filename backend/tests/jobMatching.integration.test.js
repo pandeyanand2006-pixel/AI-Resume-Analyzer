@@ -33,6 +33,10 @@ describe('Job matching integration', () => {
     const resume = await Resume.create({
       user: user._id,
       originalName: 'resume.pdf',
+      fileName: 'resume.pdf',
+      filePath: '/tmp/resume.pdf',
+      fileType: 'application/pdf',
+      fileSize: 1024,
       extractedText: 'Experienced React and Node developer with MongoDB and Docker',
       skills: ['react','node','mongodb','docker'],
       keywords: ['react','node','mongodb','docker']

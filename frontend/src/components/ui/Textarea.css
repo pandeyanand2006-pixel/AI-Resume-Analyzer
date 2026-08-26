@@ -1,0 +1,206 @@
+/* ============================================
+   TEXTAREA COMPONENT - Enhancv Professional Style
+   Modern multi-line text input with teal focus
+============================================ */
+
+.textarea-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.textarea-container--full-width {
+  width: 100%;
+}
+
+/* ============================================
+   LABEL
+============================================ */
+
+.textarea-label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  line-height: var(--leading-normal);
+}
+
+.textarea-label__required {
+  color: var(--error);
+  margin-left: var(--space-0-5);
+}
+
+/* ============================================
+   TEXTAREA WRAPPER
+============================================ */
+
+.textarea-wrapper {
+  position: relative;
+  display: flex;
+  background: white;
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-input);
+  transition: all var(--transition-base);
+}
+
+.textarea-wrapper:hover:not(.textarea-wrapper--disabled) {
+  border-color: var(--border-dark);
+}
+}
+
+.textarea-wrapper--focused {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-100);
+}
+
+.textarea-wrapper--error {
+  border-color: var(--error);
+  background: var(--error-50);
+}
+
+.textarea-wrapper--error.textarea-wrapper--focused {
+  box-shadow: 0 0 0 3px var(--error-100);
+}
+
+.textarea-wrapper--disabled {
+  background: var(--surface-soft);
+  cursor: not-allowed;
+  opacity: 0.6;
+  border-color: var(--color-gray-200);
+}
+
+/* ============================================
+   TEXTAREA ELEMENT
+============================================ */
+
+.textarea {
+  flex: 1;
+  width: 100%;
+  min-height: 120px;
+  padding: var(--space-3) var(--space-3-5);
+  border: none;
+  background: transparent;
+  font-size: var(--text-base);
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  outline: none;
+  resize: vertical;
+  line-height: var(--leading-relaxed);
+}
+
+.textarea::placeholder {
+  color: var(--text-tertiary);
+}
+
+.textarea:disabled {
+  cursor: not-allowed;
+  color: var(--text-tertiary);
+  resize: none;
+}
+
+/* ============================================
+   FOOTER (Messages & Character Count)
+============================================ */
+
+.textarea-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+/* Messages */
+.textarea-message {
+  flex: 1;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-1-5);
+  line-height: var(--leading-relaxed);
+}
+
+.textarea-message--error {
+  color: var(--error);
+}
+
+.textarea-message--error::before {
+  content: '⚠';
+  flex-shrink: 0;
+  font-size: var(--text-base);
+}
+
+/* Character Count */
+.textarea-count {
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  font-weight: var(--font-medium);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.textarea-count--limit {
+  color: var(--error);
+  font-weight: var(--font-semibold);
+}
+
+/* ============================================
+   TEXTAREA SIZES (Optional variants)
+============================================ */
+
+.textarea-container--sm .textarea {
+  min-height: 80px;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+}
+
+.textarea-container--lg .textarea {
+  min-height: 160px;
+  padding: var(--space-4) var(--space-4);
+  font-size: var(--text-lg);
+}
+
+/* ============================================
+   RESPONSIVE
+============================================ */
+
+@media (max-width: 639px) {
+  .textarea {
+    min-height: 100px;
+    padding: var(--space-2-5) var(--space-3);
+    font-size: var(--text-base);
+  }
+
+  .textarea-footer {
+    flex-direction: column;
+    gap: var(--space-1-5);
+  }
+
+  .textarea-count {
+    align-self: flex-end;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .textarea-wrapper {
+    transition: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .textarea-wrapper {
+    border-width: 2px;
+  }
+  
+  .textarea-wrapper--focused {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+}

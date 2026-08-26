@@ -31,6 +31,10 @@ describe('Skill gap integration', () => {
     const resume = await Resume.create({
       user: user._id,
       originalName: 'resume.pdf',
+      fileName: 'resume.pdf',
+      filePath: '/tmp/resume.pdf',
+      fileType: 'application/pdf',
+      fileSize: 1024,
       extractedText: 'Experienced frontend developer with React, HTML, CSS and Git',
       skills: ['react','html','css','git'],
       keywords: ['react','html','css']

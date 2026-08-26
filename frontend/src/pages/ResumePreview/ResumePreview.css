@@ -1,0 +1,824 @@
+/* =========================================================
+   RESUME PREVIEW - PROFESSIONAL ATS DESIGN
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+.preview-page {
+  min-height: 100vh;
+  background: #eef1f5;
+  padding: 30px 0 60px;
+  color: #111827;
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+/* =========================================================
+   ACTION BAR
+========================================================= */
+
+.preview-actions {
+  width: min(900px, 94%);
+  margin: 0 auto 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 15px;
+}
+
+.preview-actions a {
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.preview-actions a:hover {
+  text-decoration: underline;
+}
+
+.preview-actions div {
+  display: flex;
+  gap: 8px;
+}
+
+.preview-actions button {
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #111827;
+
+  padding: 10px 16px;
+  border-radius: 7px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.preview-actions button:hover {
+  background: #f8fafc;
+  transform: translateY(-1px);
+}
+
+.preview-actions .print-button {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: white;
+}
+
+.preview-actions .print-button:hover {
+  background: #1d4ed8;
+}
+
+/* =========================================================
+   RESUME PAPER
+========================================================= */
+
+.resume-paper {
+  width: min(900px, 94%);
+  min-height: 1120px;
+
+  margin: 0 auto;
+
+  background: #ffffff;
+
+  padding: 55px 65px;
+
+  box-shadow: 0 12px 45px rgba(15, 23, 42, 0.12);
+
+  border-radius: 3px;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.resume-header {
+  text-align: center;
+
+  border-bottom: 2px solid #111827;
+
+  padding-bottom: 18px;
+  margin-bottom: 24px;
+}
+
+.resume-header h1 {
+  margin: 0 0 10px;
+
+  color: #111827;
+
+  font-size: 32px;
+  line-height: 1.15;
+
+  font-weight: 800;
+
+  letter-spacing: 0.5px;
+
+  text-transform: uppercase;
+}
+
+.contact-info {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 4px 14px;
+
+  color: #374151;
+
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.contact-info span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.contact-info a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.resume-section {
+  margin-top: 22px;
+}
+
+.resume-section h2 {
+  margin: 0 0 10px;
+
+  padding-bottom: 5px;
+
+  border-bottom: 1.5px solid #111827;
+
+  color: #111827;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+  text-transform: uppercase;
+}
+
+.resume-section p {
+  margin: 5px 0;
+
+  color: #1f2937;
+
+  font-size: 12.5px;
+
+  line-height: 1.55;
+}
+
+/* =========================================================
+   PROFESSIONAL SUMMARY
+========================================================= */
+
+.resume-section:first-of-type p {
+  text-align: justify;
+}
+
+/* =========================================================
+   SKILLS
+========================================================= */
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 5px 7px;
+}
+
+.skill-list span {
+  padding: 0;
+
+  border: none;
+  background: transparent;
+
+  color: #1f2937;
+
+  font-size: 12.5px;
+  font-weight: 500;
+}
+
+.skill-list span:not(:last-child)::after {
+  content: " •";
+
+  margin-left: 7px;
+
+  color: #6b7280;
+}
+
+/* =========================================================
+   EDUCATION
+========================================================= */
+
+.education-item {
+  margin-bottom: 15px;
+
+  break-inside: avoid;
+}
+
+.education-top {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: baseline;
+
+  gap: 20px;
+}
+
+.education-top strong {
+  color: #111827;
+
+  font-size: 13px;
+
+  font-weight: 800;
+}
+
+.education-top span {
+  color: #4b5563;
+
+  font-size: 11.5px;
+
+  white-space: nowrap;
+}
+
+.institution {
+  margin-top: 3px;
+
+  color: #1f2937;
+
+  font-size: 12.5px;
+
+  font-weight: 700;
+}
+
+.field {
+  margin-top: 2px;
+
+  color: #4b5563;
+
+  font-size: 11.5px;
+}
+
+.grade {
+  margin-top: 3px;
+
+  color: #374151;
+
+  font-size: 11.5px;
+
+  font-weight: 600;
+}
+
+/* =========================================================
+   PROJECTS
+========================================================= */
+
+.project-item {
+  margin-bottom: 17px;
+
+  break-inside: avoid;
+}
+
+.project-title {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: baseline;
+
+  gap: 20px;
+}
+
+.project-title strong {
+  color: #111827;
+
+  font-size: 13px;
+
+  font-weight: 800;
+}
+
+.project-title a {
+  color: #2563eb;
+
+  font-size: 11.5px;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  white-space: nowrap;
+}
+
+.project-title a:hover {
+  text-decoration: underline;
+}
+
+.technologies {
+  margin-top: 3px !important;
+
+  color: #374151 !important;
+
+  font-size: 11.5px !important;
+}
+
+.technologies strong {
+  font-weight: 700;
+}
+
+.project-item > p:last-child {
+  margin-top: 5px;
+
+  line-height: 1.55;
+}
+
+/* =========================================================
+   EXPERIENCE
+========================================================= */
+
+.experience-item {
+  margin-bottom: 17px;
+
+  break-inside: avoid;
+}
+
+.experience-top {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: baseline;
+
+  gap: 20px;
+}
+
+.experience-top strong {
+  color: #111827;
+
+  font-size: 13px;
+
+  font-weight: 800;
+}
+
+.experience-top span {
+  color: #4b5563;
+
+  font-size: 11.5px;
+
+  white-space: nowrap;
+}
+
+.experience-item > strong {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #374151;
+
+  font-size: 12px;
+}
+
+.experience-item p {
+  margin-top: 5px;
+}
+
+/* =========================================================
+   CERTIFICATIONS
+========================================================= */
+
+.certification-item {
+  margin-bottom: 12px;
+
+  break-inside: avoid;
+}
+
+.certification-top {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: baseline;
+
+  gap: 20px;
+}
+
+.certification-top strong {
+  color: #111827;
+
+  font-size: 12.5px;
+
+  font-weight: 800;
+}
+
+.certification-top span {
+  color: #4b5563;
+
+  font-size: 11.5px;
+
+  white-space: nowrap;
+}
+
+.certification-item p {
+  margin-top: 3px;
+}
+
+.certification-item a {
+  color: #2563eb;
+
+  font-size: 11.5px;
+
+  text-decoration: none;
+}
+
+/* =========================================================
+   ACHIEVEMENTS
+========================================================= */
+
+.achievement-item {
+  margin-bottom: 11px;
+
+  break-inside: avoid;
+}
+
+.achievement-top {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: baseline;
+
+  gap: 20px;
+}
+
+.achievement-top strong {
+  color: #111827;
+
+  font-size: 12.5px;
+
+  font-weight: 800;
+}
+
+.achievement-top span {
+  color: #4b5563;
+
+  font-size: 11.5px;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   CAREER TARGET
+========================================================= */
+
+.career-target {
+  margin-top: 20px;
+}
+
+.career-target p {
+  margin: 3px 0;
+}
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.preview-loading {
+  min-height: 100vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 15px;
+
+  background: #f5f7fb;
+
+  color: #111827;
+}
+
+.preview-loading h2 {
+  margin: 0;
+
+  font-size: 18px;
+}
+
+.preview-spinner {
+  width: 42px;
+  height: 42px;
+
+  border: 4px solid #dbeafe;
+
+  border-top-color: #2563eb;
+
+  border-radius: 50%;
+
+  animation: spin-preview 0.8s linear infinite;
+}
+
+@keyframes spin-preview {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.preview-error {
+  min-height: 100vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+
+  background: #f5f7fb;
+
+  text-align: center;
+
+  padding: 30px;
+}
+
+.preview-error h2 {
+  margin: 0;
+
+  color: #dc2626;
+}
+
+.preview-error p {
+  color: #4b5563;
+}
+
+.preview-error a {
+  color: #2563eb;
+
+  text-decoration: none;
+
+  font-weight: 700;
+}
+
+/* =========================================================
+   PRINT / SAVE PDF
+========================================================= */
+
+@media print {
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  html,
+  body {
+    width: 210mm;
+    min-height: 297mm;
+
+    margin: 0;
+    padding: 0;
+
+    background: #ffffff !important;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .preview-page {
+    width: 100%;
+
+    min-height: auto;
+
+    margin: 0;
+    padding: 0;
+
+    background: #ffffff !important;
+  }
+
+  .resume-paper {
+    width: 210mm;
+
+    min-height: auto;
+
+    margin: 0;
+
+    padding: 18mm 18mm 16mm;
+
+    border-radius: 0;
+
+    box-shadow: none !important;
+
+    background: #ffffff !important;
+  }
+
+  .resume-header {
+    margin-bottom: 18px;
+  }
+
+  .resume-header h1 {
+    font-size: 25px;
+  }
+
+  .resume-section {
+    margin-top: 15px;
+
+    break-inside: avoid;
+  }
+
+  .resume-section h2 {
+    font-size: 12px;
+
+    margin-bottom: 7px;
+
+    padding-bottom: 4px;
+  }
+
+  .resume-section p {
+    font-size: 10.5px;
+
+    line-height: 1.45;
+  }
+
+  .contact-info {
+    font-size: 9.5px;
+  }
+
+  .skill-list span {
+    font-size: 10.5px;
+  }
+
+  .education-top strong,
+  .project-title strong,
+  .experience-top strong,
+  .certification-top strong,
+  .achievement-top strong {
+    font-size: 11px;
+  }
+
+  .education-top span,
+  .experience-top span,
+  .certification-top span,
+  .achievement-top span {
+    font-size: 9.5px;
+  }
+
+  .institution {
+    font-size: 10.5px;
+  }
+
+  .field,
+  .grade,
+  .technologies {
+    font-size: 9.5px !important;
+  }
+
+  .project-title a,
+  .certification-item a {
+    font-size: 9.5px;
+  }
+
+  .project-item,
+  .education-item,
+  .experience-item,
+  .certification-item,
+  .achievement-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .preview-page {
+    padding: 15px 0 40px;
+  }
+
+  .preview-actions {
+    width: 94%;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    margin-bottom: 15px;
+  }
+
+  .preview-actions div {
+    width: 100%;
+  }
+
+  .preview-actions button {
+    flex: 1;
+  }
+
+  .resume-paper {
+    width: 94%;
+
+    min-height: auto;
+
+    padding: 35px 25px;
+  }
+
+  .resume-header h1 {
+    font-size: 26px;
+  }
+
+  .contact-info {
+    justify-content: center;
+
+    font-size: 11px;
+  }
+
+  .education-top,
+  .project-title,
+  .experience-top,
+  .certification-top,
+  .achievement-top {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 3px;
+  }
+
+  .education-top span,
+  .experience-top span,
+  .certification-top span,
+  .achievement-top span {
+    white-space: normal;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 450px) {
+
+  .resume-paper {
+    width: 96%;
+
+    padding: 28px 20px;
+  }
+
+  .resume-header h1 {
+    font-size: 23px;
+  }
+
+  .resume-section h2 {
+    font-size: 13px;
+  }
+
+  .resume-section p {
+    font-size: 12px;
+  }
+
+  .skill-list span {
+    font-size: 11px;
+  }
+}

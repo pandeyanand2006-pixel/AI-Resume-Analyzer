@@ -1,0 +1,233 @@
+/* ============================================
+   CIRCULAR PROGRESS - Enhancv Score Gauge
+   92/100 style circular progress indicator
+============================================ */
+
+.circular-progress {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  flex-shrink: 0;
+}
+
+/* Fixed square sizes so centering is pixel-perfect */
+.circular-progress--sm { width: 80px; height: 80px; }
+.circular-progress--md { width: 120px; height: 120px; }
+.circular-progress--lg { width: 160px; height: 160px; }
+.circular-progress--xl { width: 200px; height: 200px; }
+
+/* SVG Container */
+.circular-progress__svg {
+  display: block;
+  transform: scale(1);
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+/* Background Circle */
+.circular-progress__bg {
+  fill: none;
+  stroke: var(--background-gray);
+  opacity: 0.3;
+}
+
+/* Progress Bar Circle */
+.circular-progress__bar {
+  fill: none;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s ease-in-out;
+}
+
+/* Content Overlay (Score) - perfect center inside circle */
+.circular-progress__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  line-height: 1;
+  pointer-events: none;
+  width: 100%;
+}
+
+.circular-progress__score {
+  font-weight: var(--font-extrabold);
+  line-height: 1;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.circular-progress__max {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  font-weight: var(--font-semibold);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  opacity: 0.9;
+}
+
+.circular-progress__label {
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+/* ============================================
+   COLOR VARIANTS
+============================================ */
+
+/* Primary - Teal */
+.circular-progress--primary .circular-progress__bar {
+  stroke: var(--primary);
+}
+
+.circular-progress--primary .circular-progress__score {
+  color: var(--primary);
+}
+
+/* Success - Green */
+.circular-progress--success .circular-progress__bar {
+  stroke: var(--success);
+}
+
+.circular-progress--success .circular-progress__score {
+  color: var(--success);
+}
+
+/* Warning - Orange */
+.circular-progress--warning .circular-progress__bar {
+  stroke: var(--warning);
+}
+
+.circular-progress--warning .circular-progress__score {
+  color: var(--warning);
+}
+
+/* Error - Red */
+.circular-progress--error .circular-progress__bar {
+  stroke: var(--error);
+}
+
+.circular-progress--error .circular-progress__score {
+  color: var(--error);
+}
+
+/* ============================================
+   SIZE VARIANTS
+============================================ */
+
+.circular-progress--sm .circular-progress__score {
+  font-size: var(--text-lg);
+}
+
+.circular-progress--md .circular-progress__score {
+  font-size: var(--text-3xl);
+}
+
+.circular-progress--lg .circular-progress__score {
+  font-size: var(--text-4xl);
+}
+
+.circular-progress--xl .circular-progress__score {
+  font-size: var(--text-5xl);
+}
+
+/* ============================================
+   ANIMATION
+============================================ */
+
+@keyframes progress-fill {
+  from {
+    stroke-dashoffset: 0;
+  }
+}
+
+.circular-progress__bar {
+  animation: progress-fill 1.5s ease-out;
+}
+
+/* ============================================
+   VARIANTS WITH GRADIENT
+============================================ */
+
+.circular-progress--gradient .circular-progress__bar {
+  stroke: url(#progress-gradient);
+}
+
+/* Add gradient support */
+.circular-progress__svg defs linearGradient {
+  --gradient-start: var(--primary);
+  --gradient-end: var(--purple);
+}
+
+/* ============================================
+   HOVER EFFECTS
+============================================ */
+
+.circular-progress:hover .circular-progress__svg {
+  transform: scale(1.05);
+  transition: transform var(--transition-base);
+}
+
+.circular-progress:hover .circular-progress__bar {
+  filter: brightness(1.1);
+}
+
+/* ============================================
+   RESPONSIVE
+============================================ */
+
+@media (max-width: 768px) {
+  .circular-progress--xl {
+    transform: scale(0.85);
+  }
+
+  .circular-progress--lg {
+    transform: scale(0.9);
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .circular-progress__bar {
+    transition: none;
+    animation: none;
+  }
+
+  .circular-progress:hover .circular-progress__svg {
+    transform: none;
+  }
+}
+
+/* ============================================
+   DARK MODE SUPPORT
+============================================ */
+
+@media (prefers-color-scheme: dark) {
+  .circular-progress__bg {
+    stroke: rgba(255, 255, 255, 0.1);
+  }
+
+  .circular-progress__score {
+    color: white;
+  }
+
+  .circular-progress__max {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .circular-progress__label {
+    color: rgba(255, 255, 255, 0.8);
+  }
+}

@@ -1,0 +1,435 @@
+/* ============================================
+   CARD COMPONENT - ResumeAI Design System
+   Professional containers with consistent elevation
+============================================ */
+
+.card {
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ============================================
+   CARD VARIANTS
+============================================ */
+
+/* Default - subtle border and shadow */
+.card--default {
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.card--default:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Elevated - prominent shadow, no border */
+.card--elevated {
+  border: none;
+  box-shadow: var(--shadow-lg);
+}
+
+.card--elevated:hover {
+  box-shadow: var(--shadow-xl);
+}
+
+/* Outlined - border only, minimal shadow */
+.card--outlined {
+  border: 1.5px solid var(--border);
+  box-shadow: none;
+}
+
+.card--outlined:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-xs);
+}
+
+/* Interactive - clear clickable affordance */
+.card--interactive {
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+}
+
+.card--interactive:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.card--interactive:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Flat - minimal styling, just background */
+.card--flat {
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+
+/* ============================================
+   CARD STATES
+============================================ */
+
+.card--hover:hover {
+  border-color: var(--color-gray-300);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+}
+
+.card--clickable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.card--clickable:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   CARD PADDING VARIANTS
+============================================ */
+
+.card--padding-none {
+  padding: 0;
+}
+
+.card--padding-sm {
+  padding: var(--space-4);
+}
+
+.card--padding-md {
+  padding: var(--space-6);
+}
+
+.card--padding-lg {
+  padding: var(--space-8);
+}
+
+.card--padding-xl {
+  padding: var(--space-10);
+}
+
+/* ============================================
+   CARD SUBCOMPONENTS
+============================================ */
+
+.card__header {
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.card__body {
+  /* Default body styling - flexible */
+  line-height: var(--leading-relaxed);
+}
+
+.card__footer {
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border);
+  margin-top: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+/* When card has no padding, apply to subcomponents */
+.card--padding-none .card__header,
+.card--padding-none .card__body,
+.card--padding-none .card__footer {
+  padding-left: var(--space-6);
+  padding-right: var(--space-6);
+}
+
+.card--padding-none .card__header {
+  padding-top: var(--space-6);
+}
+
+.card--padding-none .card__footer {
+  padding-bottom: var(--space-6);
+}
+
+/* ============================================
+   CARD TITLE & DESCRIPTION
+============================================ */
+
+.card__title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin: 0 0 var(--space-2) 0;
+  line-height: var(--leading-tight);
+}
+
+.card__description {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+/* ============================================
+   SPECIALIZED CARD TYPES
+============================================ */
+
+/* Metric/Stat Card */
+.card--metric {
+  padding: var(--space-6);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  transition: all var(--transition-base);
+}
+
+.card--metric:hover {
+  border-color: var(--primary);
+  box-shadow: 0 4px 16px -2px rgba(99, 102, 241, 0.15);
+  transform: translateY(-2px);
+}
+
+.card__metric-value {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  line-height: 1;
+  margin: 0;
+}
+
+.card__metric-label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.card__metric-change {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-top: var(--space-1);
+}
+
+.card__metric-change--positive {
+  color: var(--success);
+}
+
+.card__metric-change--negative {
+  color: var(--error);
+}
+
+.card__metric-change--neutral {
+  color: var(--text-tertiary);
+}
+
+/* Feature/Service Card */
+.card--feature {
+  padding: var(--space-8);
+  text-align: center;
+  border: 1px solid var(--border);
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.card--feature:hover {
+  border-color: var(--primary);
+  box-shadow: 0 8px 24px -4px rgba(99, 102, 241, 0.2);
+  transform: translateY(-4px);
+}
+
+.card__feature-icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-4xl);
+  background: var(--primary-soft);
+  border-radius: var(--radius-lg);
+  color: var(--primary);
+}
+
+.card__feature-title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin: 0;
+  line-height: var(--leading-tight);
+}
+
+.card__feature-description {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+/* AI Badge Card */
+.card--ai {
+  border: 1px solid var(--info);
+  background: linear-gradient(135deg, var(--surface) 0%, var(--info-soft) 100%);
+  position: relative;
+}
+
+.card--ai::before {
+  content: '✨';
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  font-size: var(--text-xl);
+  opacity: 0.6;
+}
+
+.card--ai:hover {
+  border-color: var(--info);
+  box-shadow: 0 8px 24px -4px rgba(168, 85, 247, 0.25);
+}
+
+/* List Card - for item lists */
+.card--list {
+  padding: 0;
+  overflow: hidden;
+}
+
+.card__list-item {
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition-fast);
+}
+
+.card__list-item:last-child {
+  border-bottom: none;
+}
+
+.card__list-item:hover {
+  background: var(--surface-soft);
+}
+
+.card__list-item--clickable {
+  cursor: pointer;
+}
+
+/* ============================================
+   CARD GROUPS & LAYOUTS
+============================================ */
+
+.card-grid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.card-grid--2col {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.card-grid--3col {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card-grid--4col {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* ============================================
+   RESPONSIVE
+============================================ */
+
+@media (max-width: 1024px) {
+  .card-grid--4col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .card-grid--3col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .card-grid--2col,
+  .card-grid--3col,
+  .card-grid--4col {
+    grid-template-columns: 1fr;
+  }
+  
+  .card--padding-xl {
+    padding: var(--space-6);
+  }
+  
+  .card--padding-lg {
+    padding: var(--space-5);
+  }
+
+  .card__title {
+    font-size: var(--text-lg);
+  }
+
+  .card__metric-value {
+    font-size: var(--text-3xl);
+  }
+  
+  .card--feature {
+    padding: var(--space-6);
+  }
+  
+  .card__feature-icon {
+    width: 56px;
+    height: 56px;
+    font-size: var(--text-3xl);
+  }
+}
+
+@media (max-width: 639px) {
+  .card--padding-md {
+    padding: var(--space-4);
+  }
+  
+  .card__header,
+  .card__footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card--hover:hover,
+  .card--interactive:hover,
+  .card--metric:hover,
+  .card--feature:hover {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .card {
+    border-width: 2px;
+  }
+  
+  .card--elevated {
+    border: 2px solid var(--border);
+  }
+}

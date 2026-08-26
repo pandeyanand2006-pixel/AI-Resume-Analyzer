@@ -2,20 +2,7 @@ const fs = require("fs");
 
 const Resume = require("../models/Resume");
 const extractResumeText = require("../services/resumeParser");
-
-const { GoogleGenerativeAI } = require("@google/generative-ai");
-
-// ======================================================
-// GEMINI AI
-// ======================================================
-
-const genAI = new GoogleGenerativeAI(
-  process.env.GEMINI_API_KEY
-);
-
-const geminiModel = genAI.getGenerativeModel({
-  model: "gemini-2.5-flash",
-});
+const { generateAIResponse } = require("../services/groqService");
 
 // ======================================================
 // UPLOAD RESUME
@@ -132,7 +119,8 @@ const getUserResumes = async (req, res) => {
     });
 
     const safeResumes = resumes.map((r) => ({
-      id: r._id,
+      id: String(r._id),
+      _id: String(r._id),
       originalName: r.originalName,
       fileName: r.fileName,
       fileType: r.fileType,
@@ -174,6 +162,11 @@ const getResumeById = async (req, res) => {
       });
     }
 
+    const mongoose = require("mongoose");
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({ success: false, message: "Invalid resume ID" });
+    }
+
     const userId =
       req.user._id || req.user.id;
 
@@ -190,19 +183,22 @@ const getResumeById = async (req, res) => {
     }
 
     const safe = {
-      id: resume._id,
+      id: String(resume._id),
+      _id: String(resume._id),
       originalName: resume.originalName,
       fileName: resume.fileName,
       fileType: resume.fileType,
       fileSize: resume.fileSize,
       status: resume.status,
       createdAt: resume.createdAt,
+      updatedAt: resume.updatedAt,
       atsScore: resume.atsScore || 0,
       skills: resume.skills || [],
       sections: resume.sections || [],
       strengths: resume.strengths || [],
       improvements: resume.improvements || [],
       keywords: resume.keywords || [],
+      extractedText: resume.extractedText || "",
     };
 
     return res.status(200).json({
@@ -219,6 +215,50 @@ const getResumeById = async (req, res) => {
       success: false,
       message: "Failed to fetch resume.",
     });
+  }
+};
+
+// ======================================================
+// GET RESUME FILE (serve PDF/DOCX)
+// ======================================================
+
+const path = require("path");
+
+const getResumeFile = async (req, res) => {
+  try {
+    if (!req.user) {
+      return res.status(401).json({ success: false, message: "Authentication required." });
+    }
+    const mongoose = require("mongoose");
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({ success: false, message: "Invalid resume ID" });
+    }
+    const userId = req.user._id || req.user.id;
+    const resume = await Resume.findOne({ _id: req.params.id, user: userId });
+    if (!resume) {
+      return res.status(404).json({ success: false, message: "Resume not found." });
+    }
+    if (!resume.filePath) {
+      return res.status(404).json({ success: false, message: "File not found on server." });
+    }
+    // Handle both absolute and relative paths
+    let absolutePath = resume.filePath;
+    if (!path.isAbsolute(absolutePath)) {
+      absolutePath = path.resolve(__dirname, "..", absolutePath);
+    }
+    if (!fs.existsSync(absolutePath)) {
+      // Fallback: try uploads folder directly
+      const fallback = path.join(__dirname, "..", "uploads", path.basename(absolutePath));
+      if (fs.existsSync(fallback)) absolutePath = fallback;
+      else return res.status(404).json({ success: false, message: "File not found on server." });
+    }
+    res.setHeader("Content-Type", resume.fileType || "application/pdf");
+    res.setHeader("Content-Disposition", `inline; filename="${resume.originalName}"`);
+    res.setHeader("Cache-Control", "private, max-age=0");
+    return res.sendFile(absolutePath);
+  } catch (error) {
+    console.error("Get resume file error:", error);
+    return res.status(500).json({ success: false, message: "Failed to fetch file." });
   }
 };
 
@@ -621,24 +661,21 @@ ${text}
 `;
 
     // ==================================================
-    // CALL GEMINI
+    // CALL GROQ AI
     // ==================================================
 
-    const result =
-      await geminiModel.generateContent(prompt);
-
-    const response =
-      await result.response;
-
-    const aiText =
-      response.text().trim();
+    const aiText = await generateAIResponse(prompt, {
+      temperature: 0.3,
+      maxTokens: 4000,
+      systemMessage: "You are an expert universal resume analyzer and career coach. Always return valid JSON without markdown."
+    });
 
     console.log(
-      "Gemini analysis response received."
+      "Groq AI analysis response received."
     );
 
     console.log(
-      "Gemini raw response:"
+      "Groq raw response:"
     );
 
     console.log(aiText);
@@ -666,7 +703,7 @@ ${text}
         JSON.parse(cleanedText);
     } catch (parseError) {
       console.error(
-        "Gemini JSON parsing error:",
+        "Groq JSON parsing error:",
         parseError
       );
 
@@ -676,7 +713,7 @@ ${text}
       );
 
       throw new Error(
-        "Gemini returned an invalid analysis format."
+        "Groq AI returned an invalid analysis format."
       );
     }
 
@@ -838,98 +875,12 @@ ${text}
       improvements;
 
     resume.keywords =
-  keywords;
+      keywords;
 
-// ==================================================
-// SAVE ANALYSIS
-// ==================================================
+    resume.status =
+      "completed";
 
-resume.atsScore =
-  atsScore;
-
-resume.skills =
-  uniqueSkills;
-
-resume.sections =
-  detectedSections;
-
-resume.strengths =
-  strengths;
-
-resume.improvements =
-  improvements;
-
-resume.keywords =
-  keywords;
-
-// ==================================================
-// SAVE AI CAREER ANALYSIS
-// ==================================================
-
-resume.professionalSummary =
-  aiAnalysis.professionalSummary || "";
-
-resume.careerDirection =
-  aiAnalysis.careerDirection || "";
-
-resume.overallAssessment =
-  aiAnalysis.overallAssessment || "";
-
-resume.weaknesses =
-  weaknesses;
-
-resume.experienceAssessment =
-  aiAnalysis.experienceAssessment || "";
-
-resume.educationAssessment =
-  aiAnalysis.educationAssessment || "";
-
-resume.atsRecommendations =
-  Array.isArray(
-    aiAnalysis.atsRecommendations
-  )
-    ? aiAnalysis.atsRecommendations
-    : [];
-
-resume.recommendedRoles =
-  Array.isArray(
-    aiAnalysis.recommendedRoles
-  )
-    ? aiAnalysis.recommendedRoles
-    : [];
-
-// ==================================================
-// SAVE AI SKILL ANALYSIS
-// ==================================================
-
-resume.skillsAssessment = {
-  technicalSkills:
-    aiAnalysis.skillsAssessment
-      ?.technicalSkills || [],
-
-  professionalSkills:
-    aiAnalysis.skillsAssessment
-      ?.professionalSkills || [],
-
-  domainSkills:
-    aiAnalysis.skillsAssessment
-      ?.domainSkills || [],
-
-  skillInsights:
-    skillInsights,
-
-  skillGaps:
-    skillGaps,
-};
-
-// ==================================================
-// COMPLETE
-// ==================================================
-
-resume.status =
-  "completed";
-
-await resume.save();
+    await resume.save();
 
     // ==================================================
     // FINAL RESPONSE
@@ -948,7 +899,7 @@ await resume.save();
       success: true,
 
       message:
-        "Resume analyzed successfully using Gemini AI.",
+        "Resume analyzed successfully using Groq AI.",
 
       analysis: {
         resumeId:
@@ -1023,7 +974,6 @@ await resume.save();
       message:
         "Resume analysis failed.",
     });
-    });
   }
 };
 
@@ -1035,6 +985,7 @@ module.exports = {
   uploadResume,
   getUserResumes,
   getResumeById,
+  getResumeFile,
   deleteResume,
   analyzeResume,
 };

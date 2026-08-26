@@ -1,0 +1,15 @@
+
+> backend@1.0.0 test
+> jest --runInBand --runInBand --json --outputFile=jest-report.json
+
+  ●  process.exit called with "1"
+
+    [0m [90m 17 |[39m   } [36mcatch[39m (error) {
+     [90m 18 |[39m     console[33m.[39merror([32m"MongoDB connection failed:"[39m[33m,[39m error[33m.[39mmessage)[33m;[39m
+    [31m[1m>[22m[39m[90m 19 |[39m     process[33m.[39mexit([35m1[39m)[33m;[39m
+     [90m    |[39m             [31m[1m^[22m[39m
+     [90m 20 |[39m   }
+     [90m 21 |[39m }[33m;[39m
+     [90m 22 |[39m[0m
+
+      at exit (config/db.js:19:13)

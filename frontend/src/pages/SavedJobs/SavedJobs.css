@@ -1,0 +1,224 @@
+/* ============================================
+   SAVED JOBS - Enhancv-Inspired Design
+============================================ */
+
+.saved-jobs {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Filters */
+.saved-jobs__filters {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: var(--space-5);
+  margin-bottom: var(--space-6);
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.saved-jobs__filter-group {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.saved-jobs__filter-label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--text-secondary);
+}
+
+/* Job List */
+.saved-jobs__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.saved-jobs__job-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: var(--space-6);
+  display: flex;
+  gap: var(--space-6);
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+
+.saved-jobs__job-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+}
+
+.saved-jobs__company-logo {
+  width: 72px;
+  height: 72px;
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-button);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-bold);
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.saved-jobs__job-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.saved-jobs__job-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+
+.saved-jobs__job-info {
+  flex: 1;
+}
+
+.saved-jobs__job-title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin: 0 0 var(--space-1) 0;
+}
+
+.saved-jobs__company-name {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.saved-jobs__job-actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.saved-jobs__action-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-button);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.saved-jobs__action-btn:hover {
+  background: var(--surface-soft);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.saved-jobs__action-btn--remove:hover {
+  background: var(--error-soft);
+  border-color: var(--error);
+  color: var(--error);
+}
+
+.saved-jobs__job-meta {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin: var(--space-3) 0;
+}
+
+.saved-jobs__meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-sm);
+  color: var(--text-tertiary);
+}
+
+.saved-jobs__job-tags {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.saved-jobs__tag {
+  padding: var(--space-1) var(--space-2);
+  background: var(--primary-soft);
+  color: var(--primary);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+}
+
+.saved-jobs__saved-date {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  background: var(--surface-soft);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  margin-top: var(--space-3);
+}
+
+/* Empty State */
+.saved-jobs__empty {
+  text-align: center;
+  padding: var(--space-16);
+}
+
+.saved-jobs__empty-icon {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto var(--space-4);
+  color: var(--text-tertiary);
+  opacity: 0.5;
+}
+
+.saved-jobs__empty-title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin: 0 0 var(--space-2) 0;
+}
+
+.saved-jobs__empty-description {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-6) 0;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .saved-jobs__job-card {
+    flex-direction: column;
+  }
+
+  .saved-jobs__company-logo {
+    width: 56px;
+    height: 56px;
+  }
+
+  .saved-jobs__job-header {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .saved-jobs__job-actions {
+    align-self: flex-start;
+  }
+}
