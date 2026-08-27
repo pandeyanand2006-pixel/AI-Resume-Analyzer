@@ -42,8 +42,38 @@ const Dashboard = () => {
           resumeStrength: score >= 80 ? 'Strong' : score >= 55 ? 'Moderate' : score > 0 ? 'Weak' : 'Not Analyzed',
           profileCompletion: score > 0 ? Math.min(90, 48 + score / 2) : 48
         });
+      } else {
+        try {
+          const dash = await api.get('/career-dashboard/summary');
+          const d = dash.data?.summary || {};
+          if (d.resumeScore || d.jobMatches) {
+            const score = d.resumeScore || 0;
+            setStats({
+              atsScore: score,
+              jobMatches: d.jobMatches || 24,
+              missingSkills: d.missingSkills || 3,
+              resumeStrength: score >= 80 ? 'Strong' : score >= 55 ? 'Moderate' : score > 0 ? 'Weak' : 'Not Analyzed',
+              profileCompletion: d.profileCompletion || (score > 0 ? Math.min(90, 48 + score / 2) : 48),
+            });
+          }
+        } catch (_) { /* ignore — fallback safe defaults */ }
       }
-    } catch (e) { /* ignore */ }
+    } catch (e) {
+      try {
+        const dash = await api.get('/career-dashboard/summary');
+        const d = dash.data?.summary || {};
+        if (d.resumeScore || d.jobMatches) {
+          const score = d.resumeScore || 0;
+          setStats({
+            atsScore: score,
+            jobMatches: d.jobMatches || 24,
+            missingSkills: d.missingSkills || 3,
+            resumeStrength: score >= 80 ? 'Strong' : score >= 55 ? 'Moderate' : score > 0 ? 'Weak' : 'Not Analyzed',
+            profileCompletion: d.profileCompletion || (score > 0 ? Math.min(90, 48 + score / 2) : 48),
+          });
+        }
+      } catch (_) { /* ignore — fallback safe defaults */ }
+    }
   };
 
   const getGreeting = () => {

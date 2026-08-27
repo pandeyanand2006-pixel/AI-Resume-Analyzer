@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import AppLayout from "../../components/layout/AppLayout";
 import "../../styles/feature-pages.css";
 import "./JobOptimization.css";
-
-const API_URL = import.meta.env.VITE_API_URL.replace(/\/api$/, "");
+import api from "../../services/api";
 
 const JobOptimization = () => {
   const [jobDescription, setJobDescription] = useState("");
@@ -14,16 +13,28 @@ const JobOptimization = () => {
   const optimizeResume = async () => {
     setError("");
     if (!jobDescription.trim()) { setError("Please paste a job description first."); return; }
-    if (jobDescription.trim().length < 50) { setError("Please enter a complete job description."); return; }
+    if (jobDescription.trim().length < 50) { setError("Please enter a complete job description (at least 50 characters)."); return; }
     try {
       setLoading(true);
-      const token = localStorage.getItem("token") || localStorage.getItem("authToken") || localStorage.getItem("accessToken");
-      if (!token) { setError("Please login first."); return; }
-      const response = await fetch(`${API_URL}/api/job-optimization`, { method:"POST", headers:{"Content-Type":"application/json",Authorization:`Bearer ${token}`}, credentials:"include", body: JSON.stringify({ jobDescription })});
-      const data = await response.json();
-      if (!response.ok) throw new Error(data?.message || `Optimization failed (${response.status})`);
+      const res = await api.post('/job-optimization', { jobDescription });
+      const data = res?.data || {};
+      if (!res || !data || data.success === false) throw new Error(data?.message || "Optimization failed. Please try again.");
       setResult(data);
-    } catch (err) { console.error("JOB OPTIMIZATION ERROR:", err); setError(err.message || "Failed to optimize resume."); } finally { setLoading(false); }
+    } catch (err) {
+      console.error("JOB OPTIMIZATION ERROR:", err);
+      let message = err?.message || "Failed to optimize resume.";
+      const rawText = err?.response?.data ? String(err.response.data) : err?.message || "";
+      if (rawText.startsWith("<!DOCTYPE") || rawText.startsWith("<html")) {
+        message = "Server returned an unexpected response. Make sure your backend is running on Render and your API URL is correct.";
+      }
+      if (err?.response?.status === 401 || err?.response?.status === 403) {
+        message = "Your session expired. Please log out and log in again.";
+      }
+      if (err?.response?.status === 404) {
+        message = "Job optimization endpoint is unreachable. Please ensure your Render backend is fully deployed.";
+      }
+      setError(message);
+    } finally { setLoading(false); }
   };
 
   return (

@@ -1,6 +1,7 @@
 const fs = require("fs");
 
 const Resume = require("../models/Resume");
+const GeneratedResume = require("../models/GeneratedResume");
 const extractResumeText = require("../services/resumeParser");
 const { generateAIResponse } = require("../services/groqService");
 
@@ -981,6 +982,67 @@ ${text}
 // EXPORTS
 // ======================================================
 
+const getLatestResume = async (req, res) => {
+  try {
+    const userId = req.user?.id;
+    if (!userId) {
+      return res.status(401).json({ success: false, message: "Authentication required." });
+    }
+
+    // Check both builder (GeneratedResume) and uploaded (Resume) for the user's most recent resume
+    const [latestBuilder, latestUploaded] = await Promise.all([
+      GeneratedResume.findOne({ user: userId }).sort({ createdAt: -1 }).lean(),
+      Resume.findOne({ user: userId }).sort({ createdAt: -1 }).lean(),
+    ]);
+
+    let selected = null;
+    let source = null;
+
+    const builderTime = latestBuilder?.createdAt ? new Date(latestBuilder.createdAt).getTime() : 0;
+    const uploadedTime = latestUploaded?.createdAt ? new Date(latestUploaded.createdAt).getTime() : 0;
+
+    if (!latestBuilder && !latestUploaded) {
+      return res.status(200).json({
+        success: true,
+        message: "No resume found yet. Upload or create one to get started.",
+        resume: null,
+      });
+    }
+
+    if (builderTime >= uploadedTime) {
+      selected = latestBuilder;
+      source = "builder";
+    } else {
+      selected = latestUploaded;
+      source = "uploaded";
+    }
+
+    // Normalize shape so Dashboard can render either type uniformly
+    const normalized = {
+      ...selected,
+      source,
+      atsScore:
+        selected.atsScore ??
+        selected.atsscore ??
+        selected.score ??
+        (selected.analysis?.atsScore) ??
+        0,
+      fileName: selected.fileName || selected.originalName || null,
+    };
+
+    return res.status(200).json({
+      success: true,
+      resume: normalized,
+    });
+  } catch (error) {
+    console.error("Get latest resume error:", error);
+    return res.status(500).json({
+      success: false,
+      message: error.message || "Failed to retrieve latest resume.",
+    });
+  }
+};
+
 module.exports = {
   uploadResume,
   getUserResumes,
@@ -988,4 +1050,5 @@ module.exports = {
   getResumeFile,
   deleteResume,
   analyzeResume,
+  getLatestResume,
 };

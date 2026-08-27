@@ -8,6 +8,7 @@ const {
   getResumeFile,
   deleteResume,
   analyzeResume,
+  getLatestResume,
 } = require("../controllers/resumeController");
 
 const router = express.Router();
@@ -31,6 +32,18 @@ router.get(
   "/",
   authMiddleware,
   getUserResumes
+);
+
+// ==========================================
+// GET /api/resumes/latest
+// Get the user's most recent resume across
+// both builder (GeneratedResume) and uploaded Resume.
+// MUST be declared BEFORE /:id to avoid param collision.
+// ==========================================
+router.get(
+  "/latest",
+  authMiddleware,
+  getLatestResume
 );
 
 // ==========================================
