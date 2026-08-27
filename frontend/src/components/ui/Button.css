@@ -40,9 +40,9 @@
 ============================================ */
 
 .btn--primary {
-  background: var(--primary);
-  color: white;
-  border-color: var(--primary);
+  background: #0891B2 !important;
+  color: #ffffff !important;
+  border-color: #0891B2 !important;
 }
 
 .btn--primary:hover {
@@ -61,14 +61,14 @@
 ============================================ */
 
 .btn--secondary {
-  background: white;
-  color: var(--text-primary);
-  border-color: var(--border-dark);
+  background: #ffffff !important;
+  color: #0F172A !important;
+  border-color: #94A3B8 !important;
 }
 
 .btn--secondary:hover {
-  background: var(--background-gray);
-  border-color: var(--text-primary);
+  background: #F8FAFC !important;
+  border-color: #0F172A !important;
 }
 
 /* ============================================
@@ -92,14 +92,14 @@
 ============================================ */
 
 .btn--ghost {
-  background: transparent;
-  color: var(--text-primary);
-  border-color: transparent;
+  background: transparent !important;
+  color: #0F172A !important;
+  border-color: transparent !important;
 }
 
 .btn--ghost:hover {
-  background: var(--background-gray);
-  color: var(--primary);
+  background: #F8FAFC !important;
+  color: #0891B2 !important;
 }
 
 /* ============================================

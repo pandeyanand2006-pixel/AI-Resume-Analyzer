@@ -76,7 +76,7 @@
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: var(--font-bold);
   line-height: var(--leading-tight);
-  color: var(--text-primary);
+  color: #0F172A !important;
   margin-bottom: var(--space-6);
   letter-spacing: -0.02em;
 }
@@ -93,7 +93,7 @@
 .hero-sub {
   font-size: var(--text-xl);
   line-height: var(--leading-relaxed);
-  color: var(--text-secondary);
+  color: #475569 !important;
   max-width: 700px;
   margin: 0 auto var(--space-8);
 }
@@ -140,14 +140,14 @@
 .features-header h2 {
   font-size: var(--text-4xl);
   font-weight: var(--font-bold);
-  color: var(--text-primary);
+  color: #0F172A !important;
   margin-bottom: var(--space-4);
   line-height: var(--leading-tight);
 }
 
 .features-header p {
   font-size: var(--text-lg);
-  color: var(--text-secondary);
+  color: #475569 !important;
   max-width: 600px;
   margin: 0 auto;
 }
@@ -211,7 +211,7 @@
 .feature-title {
   font-size: var(--text-xl);
   font-weight: var(--font-semibold);
-  color: var(--text-primary);
+  color: #0F172A !important;
   margin-bottom: var(--space-3);
   line-height: var(--leading-snug);
 }
@@ -219,7 +219,7 @@
 .feature-description {
   font-size: var(--text-base);
   line-height: var(--leading-relaxed);
-  color: var(--text-secondary);
+  color: #475569 !important;
   margin-bottom: var(--space-4);
 }
 
@@ -267,14 +267,14 @@
 .how-it-works-header h2 {
   font-size: var(--text-4xl);
   font-weight: var(--font-bold);
-  color: var(--text-primary);
+  color: #0F172A !important;
   margin-bottom: var(--space-4);
   line-height: var(--leading-tight);
 }
 
 .how-it-works-header p {
   font-size: var(--text-lg);
-  color: var(--text-secondary);
+  color: #475569 !important;
 }
 
 .how-it-works-grid {
@@ -309,14 +309,14 @@
 .step-title {
   font-size: var(--text-xl);
   font-weight: var(--font-semibold);
-  color: var(--text-primary);
+  color: #0F172A !important;
   margin-bottom: var(--space-3);
 }
 
 .step-description {
   font-size: var(--text-base);
   line-height: var(--leading-relaxed);
-  color: var(--text-secondary);
+  color: #475569 !important;
 }
 
 /* ============================================
@@ -352,7 +352,7 @@
 .cta-section h2 {
   font-size: var(--text-4xl);
   font-weight: var(--font-bold);
-  color: white;
+  color: #ffffff !important;
   margin-bottom: var(--space-4);
   line-height: var(--leading-tight);
 }
@@ -360,7 +360,7 @@
 .cta-section p {
   font-size: var(--text-xl);
   line-height: var(--leading-relaxed);
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.85) !important;
   max-width: 700px;
   margin: 0 auto var(--space-8);
 }

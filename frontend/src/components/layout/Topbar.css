@@ -376,13 +376,21 @@
 @media (max-width: 768px) {
   .topbar { padding: 0 12px; gap: 8px; }
   .topbar__center { max-width: none; flex: 1; margin: 0 4px; }
-  .topbar__search-input { font-size: 13px; height: 36px; }
-  .topbar__search-input::placeholder { font-size: 12px; }
-  .topbar__search-dropdown { left: -40px; right: -40px; }
-  .topbar__dropdown--notifications { min-width: 300px; right:-20px; }
+  .topbar__search-input { font-size: 13px; height: 36px; padding: 0 34px; }
+  .topbar__search-input::placeholder { font-size: 11px; }
+  .topbar__search-dropdown { left: 0; right: 0; width: 100%; min-width: 260px; }
+  .topbar__search-item { gap: 8px; padding: 10px; }
+  .topbar__search-item-icon { width: 32px; height: 32px; }
+  .topbar__search-item-open { font-size: 11px; padding: 5px 8px; }
+  .topbar__search-footer { flex-wrap: wrap; gap: 8px; }
+  .topbar__dropdown--notifications { min-width: calc(100vw - 40px); right: 0; left: auto; }
 }
 @media (max-width: 640px) {
   .topbar { padding: 0 10px; }
   .topbar__title { display: none; }
-  .topbar__search-dropdown { left: -50px; right: -10px; }
+  .topbar__search-dropdown { left: 0; right: 0; width: 100%; }
+  .topbar__search-item-content { min-width: 0; }
+  .topbar__search-item-desc { white-space: normal; }
+  .topbar__dropdown--notifications { min-width: calc(100vw - 24px); right: 0; }
+  .topbar__dropdown--user { right: 0; min-width: 260px; }
 }

@@ -443,28 +443,38 @@
 @media (max-width: 768px) {
   .floating-ai-chat {
     bottom: 16px;
-    left: 16px;
+    left: auto;
     right: 16px;
   }
 
   .floating-ai-chat__window {
-    width: 100%;
+    width: calc(100vw - 32px);
     max-width: none;
-    left: 0;
     right: 0;
+    left: auto;
     height: 500px;
   }
 
   .floating-ai-chat__toggle {
     width: 56px;
     height: 56px;
-    margin: 0 auto;
+    margin: 0;
+    float: right;
   }
 }
 
 @media (max-width: 480px) {
+  .floating-ai-chat {
+    bottom: 12px;
+    right: 12px;
+  }
   .floating-ai-chat__window {
+    width: calc(100vw - 24px);
     bottom: 72px;
     height: calc(100vh - 140px);
+  }
+  .floating-ai-chat__toggle {
+    width: 52px;
+    height: 52px;
   }
 }

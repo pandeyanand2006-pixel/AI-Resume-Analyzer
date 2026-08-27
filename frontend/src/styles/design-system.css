@@ -224,23 +224,28 @@
 }
 
 /* ============================================
-   DARK MODE SUPPORT (Optional)
+   DARK MODE - DISABLED (Explicit light theme enforced)
+   The app uses intentional dark/light sections. All components
+   use their own explicit colors to guarantee visibility.
 ============================================ */
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #111827;
-    --background-gray: #1F2937;
-    --surface: #1F2937;
-    --surface-elevated: #374151;
-    
-    --text-primary: #F9FAFB;
-    --text-secondary: #D1D5DB;
+    --background: #FFFFFF;
+    --background-gray: #F9FAFB;
+    --surface: #FFFFFF;
+    --surface-elevated: #FFFFFF;
+    --surface-dark: #1F2937;
+    --surface-darker: #111827;
+
+    --text-primary: #111827;
+    --text-secondary: #6B7280;
     --text-tertiary: #9CA3AF;
-    
-    --border: #374151;
-    --border-light: #4B5563;
-    --border-dark: #6B7280;
+    --text-inverse: #FFFFFF;
+
+    --border: #E5E7EB;
+    --border-light: #F3F4F6;
+    --border-dark: #D1D5DB;
   }
 }
 
