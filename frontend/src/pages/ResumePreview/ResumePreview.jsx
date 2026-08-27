@@ -51,16 +51,33 @@ const ResumePreview = () => {
           return;
         }
 
-        if (!id || id === "undefined" || id === "null" || String(id).length !== 24) {
+        if (!id || id === "undefined" || id === "null" || String(id).length < 12) {
           throw new Error(
             "Invalid resume ID"
           );
         }
 
-        // Try uploaded resume first if type=uploaded, else builder
-        let data = null;
+        // Determine preferred fetch order
+        // Builder resumes (created from AI resume builder form) must hit /resumes/builder/:id
+        // Uploaded resumes (PDF/DOCX uploads) must hit /resumes/:id
+        // If no type, start with builder (newly created resumes are almost always builder)
         let success = false;
         let fetched = null;
+
+        const tryBuilder = async () => {
+          try {
+            const res = await api.get(`/resumes/builder/${id}`);
+            if (res.data?.success && res.data?.resume) {
+              fetched = res.data.resume;
+              success = true;
+              setIsUploaded(false);
+              return true;
+            }
+          } catch (e) {
+            // ignore; fall through to uploaded
+          }
+          return false;
+        };
 
         const tryUploaded = async () => {
           try {
@@ -77,38 +94,18 @@ const ResumePreview = () => {
           return false;
         };
 
-        const tryBuilder = async () => {
-          try {
-            const response = await fetch(
-              `${API_URL}/api/resumes/builder/${id}`,
-              {
-                method: "GET",
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                  "Content-Type": "application/json",
-                },
-                credentials: "include",
-              }
-            );
-            const j = await response.json();
-            if (response.ok && j?.success && j?.resume) {
-              fetched = j.resume;
-              success = true;
-              setIsUploaded(false);
-              return true;
-            }
-          } catch (e) {}
-          return false;
-        };
-
         if (typeParam === "uploaded") {
           if (!(await tryUploaded())) await tryBuilder();
+        } else if (typeParam === "builder") {
+          if (!(await tryBuilder())) await tryUploaded();
         } else {
+          // Auto-detect: try builder first (most common after Create Resume)
+          // If fails, try uploaded
           if (!(await tryBuilder())) await tryUploaded();
         }
 
         if (!success || !fetched) {
-          throw new Error("Resume not found");
+          throw new Error("Resume not found. It may have been deleted or the link is invalid.");
         }
 
         console.log("Resume preview:", fetched);

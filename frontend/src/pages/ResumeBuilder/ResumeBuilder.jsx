@@ -61,7 +61,7 @@ if (!response.status || response.status < 200 || response.status >= 300) {
 }
       if (!data.success || !data.resume) throw new Error(data?.message || "Resume was not created.");
       const resumeId = data.resume._id; if (!resumeId) throw new Error("Server did not return resume ID.");
-      navigate(`/resume-preview/${resumeId}`);
+      navigate(`/resume-preview/${resumeId}?type=builder`);
     } catch (error) { console.error("CREATE RESUME ERROR:", error); alert(`Failed to create resume: ${error.message}`); } finally { setLoading(false); }
   };
 
