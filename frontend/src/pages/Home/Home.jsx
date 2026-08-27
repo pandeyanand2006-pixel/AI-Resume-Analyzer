@@ -195,6 +195,98 @@ function Home() {
             </div>
           </div>
         </section>
+
+        {/* ============================================
+             PROFESSIONAL CREATOR FOOTER SECTION
+        ============================================ */}
+        <footer className="creator-footer">
+          <div className="creator-footer__inner">
+
+            {/* BUILT BY - Creator Card */}
+            <div className="creator-footer__built-by">
+              <div className="creator-footer__eyebrow">BUILT BY</div>
+
+              <div className="creator-footer__card">
+                <div className="creator-footer__avatar">
+                  <span>A</span>
+                </div>
+
+                <div className="creator-footer__info">
+                  <h3 className="creator-footer__name">Anand</h3>
+                  <p className="creator-footer__role">Full-Stack Developer • AI/ML Builder</p>
+                  <p className="creator-footer__bio">
+                    Built this AI Resume Analyzer to help candidates improve their resumes,
+                    identify skill gaps, and land better opportunities faster.
+                  </p>
+
+                  <div className="creator-footer__socials">
+                    <a
+                      href="mailto:pandeyanand2006@gmail.com"
+                      className="creator-footer__social creator-footer__social--email"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span className="creator-footer__social-icon">✉</span>
+                      <span>Email</span>
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/anandghkk"
+                      className="creator-footer__social creator-footer__social--linkedin"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span className="creator-footer__social-icon">in</span>
+                      <span>LinkedIn</span>
+                    </a>
+                    <a
+                      href="https://github.com/pandeyanand2006-pixel"
+                      className="creator-footer__social creator-footer__social--github"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span className="creator-footer__social-icon">⌥</span>
+                      <span>GitHub</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div className="creator-footer__divider"></div>
+
+            {/* Bottom Footer - Nav + Meta */}
+            <div className="creator-footer__bottom">
+              <div className="creator-footer__brand">
+                <div className="creator-footer__logo">
+                  <span className="creator-footer__logo-mark">✨</span>
+                  <span className="creator-footer__logo-text">
+                    Resume<span>AI</span>
+                  </span>
+                </div>
+                <p className="creator-footer__tagline">
+                  AI-powered career platform for modern job seekers.
+                </p>
+              </div>
+
+              <nav className="creator-footer__nav" aria-label="Footer">
+                <Link to="#features" className="creator-footer__nav-link">Features</Link>
+                <Link to="#how-it-works" className="creator-footer__nav-link">How It Works</Link>
+                <Link to="/help" className="creator-footer__nav-link">Help</Link>
+                <Link to="/login" className="creator-footer__nav-link">Sign In</Link>
+              </nav>
+
+              <div className="creator-footer__meta">
+                <p className="creator-footer__copy">© 2026 Anand. All rights reserved.</p>
+                <p className="creator-footer__stack">
+                  Built with React • Node.js • MongoDB • AI/ML
+                </p>
+                <p className="creator-footer__version">v1.0.0</p>
+              </div>
+            </div>
+
+          </div>
+        </footer>
       </main>
     </div>
   );
